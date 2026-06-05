@@ -5,7 +5,7 @@
     "title": "The High-Order Limit",
     "descriptionMarkdown": "Evaluate the following limit:",
     "mainFormulaLaTeX": "\\lim_{x \\to 0} \\frac{\\sin x - x + \\frac{x^3}{6}}{x^5}",
-    "hintsMarkdown": "1. Expand $\\sin x = x - \\frac{x^3}{6} + \\frac{x^5}{120} - \\cdots$ ([Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) up to $x^5$).\n2. Substitute into the numerator — the $x$ and $\\frac{x^3}{6}$ terms cancel exactly, leaving $\\frac{x^5}{120} + O(x^7)$.\n3. Divide by $x^5$ and take $x \\to 0$.",
+    "hintsMarkdown": "1. Expand $\\sin x$ using the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) up to $x^5$.\n2. Substitute into the numerator — the $x$ and $\\frac{x^3}{6}$ terms cancel exactly, leaving $\\frac{x^5}{120} + O(x^7)$.\n3. Divide by $x^5$ and take $x \\to 0$.",
     "answerFormulaLaTeX": "\\frac{1}{120}",
     "isProof": false
   },
