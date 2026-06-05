@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Math</title>
+
+    <!-- Vue 3 & Tailwind CSS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- KaTeX for high-performance Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #171717;
+            color: #e5e5e5;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar to match dark desktop themes */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #171717; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; border: 2px solid #171717; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Markdown Styles adjustments */
+        .md-content p { margin-bottom: 0.75rem; line-height: 1.6; }
+        .md-content p:last-child { margin-bottom: 0; }
+        .md-content ol { list-style-type: decimal; margin-left: 1.25rem; margin-bottom: 0.75rem; }
+        .md-content li { margin-bottom: 0.35rem; }
+        .md-content strong { color: #ffffff; font-weight: 600; }
+        
+        /* KaTeX specific overrides for better inline blending */
+        .katex { font-size: 1.1em; }
+        .main-formula .katex { font-size: 1.4em; }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="flex flex-col h-screen w-full min-w-[640px] min-h-[520px]">
+        
+        <!-- ── Header ────────────────────────────────────────────────── -->
+        <div class="bg-[#242424] px-[28px] py-[14px] flex justify-between items-center shrink-0">
+            <div class="flex flex-col gap-[3px]">
+                <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px]">
+                    {{ currentQuestion.topic }}
+                </div>
+                <div class="text-white text-[21px] font-semibold">
+                    {{ currentQuestion.title }}
+                </div>
+            </div>
+            
+            <div class="flex flex-col items-end gap-[2px]">
+                <div class="text-[#7fb8e8] text-[18px] font-semibold">
+                    {{ progressText }}
+                </div>
+                <div class="text-[#4a7aaa] text-[10px]">
+                    questions
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Scrollable content ────────────────────────────────────── -->
+        <div class="flex-1 overflow-y-auto">
+            <div class="mx-[36px] mt-[20px] mb-[24px] flex flex-col gap-[32px]">
+                
+                <!-- Question description (markdown with inline math) -->
+                <div class="md-content px-[20px] text-[15px]" v-math="descriptionHtml"></div>
+
+                <!-- Main formula (LaTeX) -->
+                <div class="main-formula flex justify-center w-full" v-math="mainFormulaHtml"></div>
+
+                <!-- Proof badge -->
+                <div v-if="currentQuestion.isProof" 
+                     class="self-start bg-[#2B2B2B] border border-[#aac4e8] rounded-[4px] px-[10px] py-[4px]">
+                    <span class="text-[#2a5599] text-[12px] font-medium">✎  Proof / Identity</span>
+                </div>
+
+                <!-- Hints panel -->
+                <div v-show="hintsVisible" 
+                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
+                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">HINTS</div>
+                    <div class="md-content text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
+                </div>
+
+                <!-- Answer panel -->
+                <div v-show="answerVisible" 
+                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[8px]">
+                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">ANSWER</div>
+                    <div class="flex justify-center text-white" v-math="answerFormulaHtml"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── Navigation bar ────────────────────────────────────────── -->
+        <div class="bg-[#2B2B2B] border-t border-[#050505] px-[24px] py-[10px] flex justify-between items-center shrink-0">
+            
+            <button @click="prev" :disabled="!canGoPrev" 
+                    class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
+                    :class="canGoPrev ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                ← Previous
+            </button>
+
+            <div class="flex gap-[10px] absolute left-1/2 -translate-x-1/2">
+                <button @click="toggleHints" 
+                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                    {{ hintsButtonText }}
+                </button>
+                <button @click="toggleAnswer" 
+                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                    {{ answerButtonText }}
+                </button>
+            </div>
+
+            <button @click="next" :disabled="!canGoNext" 
+                    class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
+                    :class="canGoNext ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                Next →
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        // Custom Vue Directive to handle Math rendering safely on DOM updates
+        const mathDirective = {
+            mounted(el, binding) { renderMath(el, binding.value); },
+            updated(el, binding) { renderMath(el, binding.value); }
+        };
+
+        function renderMath(el, htmlString) {
+            el.innerHTML = htmlString;
+            renderMathInElement(el, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+
+        async function loadQuestionRepository() {
+            const response = await fetch('./questionRepository.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load questionRepository.json (${response.status})`);
+            }
+            return response.json();
+        }
+
+        async function bootstrap() {
+            const questionRepository = await loadQuestionRepository();
+            const app = createApp({
+            setup() {
+                const currentIndex = ref(0);
+                const hintsVisible = ref(false);
+                const answerVisible = ref(false);
+
+                // --- Computed View State ---
+                const currentQuestion = computed(() => questionRepository[currentIndex.value]);
+                const progressText = computed(() => `${currentIndex.value + 1}  /  ${questionRepository.length}`);
+                
+                const canGoPrev = computed(() => currentIndex.value > 0);
+                const canGoNext = computed(() => currentIndex.value < questionRepository.length - 1);
+                
+                const hintsButtonText = computed(() => hintsVisible.value ? "Hide Hints" : "Hints ▾");
+                const answerButtonText = computed(() => answerVisible.value ? "Hide Answer" : "Show Answer");
+
+                // --- Markdown & LaTeX Generators ---
+                // We parse the Markdown into HTML string first, then KaTeX renders the DOM nodes via our v-math directive
+                const descriptionHtml = computed(() => marked.parse(currentQuestion.value.descriptionMarkdown));
+                const hintsHtml = computed(() => marked.parse(currentQuestion.value.hintsMarkdown));
+                
+                // Wrap raw LaTeX strings in block math delimiters so KaTeX processes them
+                const mainFormulaHtml = computed(() => `$$ ${currentQuestion.value.mainFormulaLaTeX} $$`);
+                const answerFormulaHtml = computed(() => `$$ ${currentQuestion.value.answerFormulaLaTeX} $$`);
+
+                // --- Commands (Navigation & Toggles) ---
+                function prev() {
+                    if (canGoPrev.value) {
+                        currentIndex.value--;
+                        resetPanels();
+                    }
+                }
+
+                function next() {
+                    if (canGoNext.value) {
+                        currentIndex.value++;
+                        resetPanels();
+                    }
+                }
+
+                function resetPanels() {
+                    hintsVisible.value = false;
+                    answerVisible.value = false;
+                }
+
+                function toggleHints() { hintsVisible.value = !hintsVisible.value; }
+                function toggleAnswer() { answerVisible.value = !answerVisible.value; }
+
+                return {
+                    currentQuestion, progressText, canGoPrev, canGoNext,
+                    hintsVisible, answerVisible, hintsButtonText, answerButtonText,
+                    descriptionHtml, hintsHtml, mainFormulaHtml, answerFormulaHtml,
+                    prev, next, toggleHints, toggleAnswer
+                };
+            }
+            });
+
+            // Register custom directive globally before mounting
+            app.directive('math', mathDirective);
+            app.mount('#app');
+        }
+
+        bootstrap().catch((error) => {
+            console.error('Failed to start Daily Math:', error);
+        });
+    </script>
+</body>
+</html>
