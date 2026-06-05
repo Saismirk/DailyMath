@@ -27,7 +27,8 @@
     "title": "The 100th Derivative",
     "descriptionMarkdown": "Find $f^{(100)}(0)$ for:",
     "mainFormulaLaTeX": "f(x) = x^2 e^x",
-    "hintsMarkdown": "1. Write $e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$ and multiply by $x^2$: $f(x) = \\sum_{n=0}^\\infty \\frac{x^{n+2}}{n!}$.\n2. The coefficient of $x^{100}$ is $\\frac{1}{98!}$ (setting $n+2 = 100$, i.e. $n = 98$).\n3. Recall: coefficient of $x^n$ equals $\\frac{f^{(n)}(0)}{n!}$ ([Taylor series](https://en.wikipedia.org/wiki/Taylor_series)), so $f^{(100)}(0) = \\frac{100!}{98!} = 100 \\cdot 99$.",
+    "hintsMarkdown": "1. Find the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) for $f(x)$.\n2. Use the formula for the coefficients of a Maclaurin series.",
+    "solutionMarkdown": "1. Write $e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$ and multiply by $x^2$: $f(x) = \\sum_{n=0}^\\infty \\frac{x^{n+2}}{n!}$.\n2. The coefficient of $x^{100}$ is $\\frac{1}{98!}$ (setting $n+2 = 100$, i.e. $n = 98$).\n3. Recall: coefficient of $x^n$ equals $\\frac{f^{(n)}(0)}{n!}$ ([Taylor series](https://en.wikipedia.org/wiki/Taylor_series)), so $f^{(100)}(0) = \\frac{100!}{98!} = 100 \\cdot 99$.",
     "answerFormulaLaTeX": "f^{(100)}(0) = 9900",
     "isProof": false
   },
@@ -37,7 +38,8 @@
     "title": "Prove Euler's Formula",
     "descriptionMarkdown": "Using only power series, **prove** Euler's formula:",
     "mainFormulaLaTeX": "e^{ix} = \\cos x + i\\sin x",
-    "hintsMarkdown": "1. Substitute $z = ix$ into $e^z = \\sum_{n=0}^\\infty \\frac{z^n}{n!}$ and expand $(ix)^n$ using $i^{2k}=(-1)^k$ and $i^{2k+1}=(-1)^k i$.\n2. Split into even- and odd-indexed sums: $\\sum_k \\frac{(-1)^k x^{2k}}{(2k)!}$ and $i\\sum_k \\frac{(-1)^k x^{2k+1}}{(2k+1)!}$.\n3. Identify the even sum as $\\cos x$ and the odd sum (with the $i$ factored out) as $i \\sin x$ ([power series definitions](https://en.wikipedia.org/wiki/Taylor_series)).",
+    "hintsMarkdown": "1. Use the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) for $e^z$, $\\cos x$, and $\\sin x$.\n2. Substitute $z = ix$ into the series for $e^z$.",
+    "solutionMarkdown": "1. Substitute $z = ix$ into $e^z = \\sum_{n=0}^\\infty \\frac{z^n}{n!}$ and expand $(ix)^n$ using $i^{2k}=(-1)^k$ and $i^{2k+1}=(-1)^k i$.\n2. Split into even- and odd-indexed sums: $\\sum_k \\frac{(-1)^k x^{2k}}{(2k)!}$ and $i\\sum_k \\frac{(-1)^k x^{2k+1}}{(2k+1)!}$.\n3. Identify the even sum as $\\cos x$ and the odd sum (with the $i$ factored out) as $i \\sin x$ ([power series definitions](https://en.wikipedia.org/wiki/Taylor_series)).",
     "answerFormulaLaTeX": "e^{ix} = \\cos x + i\\sin x \\quad \\mathrm{(QED)}",
     "isProof": true
   },
@@ -47,7 +49,8 @@
     "title": "The Gaussian Integral",
     "descriptionMarkdown": "Evaluate the area under the standard bell curve over the entire real line:",
     "mainFormulaLaTeX": "\\int_{-\\infty}^{\\infty} e^{-x^2} \\thinspace  dx",
-    "hintsMarkdown": "1. Let $I = \\int_{-\\infty}^\\infty e^{-x^2} dx$ and form $I^2 = \\int_{-\\infty}^\\infty\\int_{-\\infty}^\\infty e^{-(x^2+y^2)}\\thinspace dx \\thinspace dy$.\n2. Switch to [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system) $(r,\\theta)$: the integral becomes $\\int_0^{2\\pi}\\negthinspace \\int_0^\\infty e^{-r^2} r\\thinspace dr\\thinspace d\\theta$.\n3. The $\\theta$-integral gives $2\\pi$; substitute $u = r^2$ for the $r$-integral; then take $I = \\sqrt{I^2}$.",
+    "hintsMarkdown": "1. Let the integral be $I$. Consider $I^2$.\n2. Convert to [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system).",
+    "solutionMarkdown": "1. Let $I = \\int_{-\\infty}^\\infty e^{-x^2} dx$ and form $I^2 = \\int_{-\\infty}^\\infty\\int_{-\\infty}^\\infty e^{-(x^2+y^2)}\\thinspace dx \\thinspace dy$.\n2. Switch to [polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system) $(r,\\theta)$: the integral becomes $\\int_0^{2\\pi}\\negthinspace \\int_0^\\infty e^{-r^2} r\\thinspace dr\\thinspace d\\theta$.\n3. The $\\theta$-integral gives $2\\pi$; substitute $u = r^2$ for the $r$-integral; then take $I = \\sqrt{I^2}$.",
     "answerFormulaLaTeX": "\\sqrt{\\pi}",
     "isProof": false
   },
@@ -57,7 +60,8 @@
     "title": "Feynman's Favourite Trick",
     "descriptionMarkdown": "Evaluate the [Dirichlet integral](https://en.wikipedia.org/wiki/Dirichlet_integral):",
     "mainFormulaLaTeX": "\\int_{0}^{\\infty} \\frac{\\sin x}{x} \\thinspace  dx",
-    "hintsMarkdown": "1. Introduce $I(t) = \\int_0^\\infty \\frac{\\sin x}{x} e^{-tx}\\thinspace dx$ and differentiate w.r.t. $t$: $I'(t) = -\\int_0^\\infty e^{-tx}\\sin x\\thinspace dx$ ([Feynman's trick](https://en.wikipedia.org/wiki/Leibniz_integral_rule#Example_4:_Feynman's_trick)).\n2. The standard result gives $I'(t) = -\\frac{1}{1+t^2}$.\n3. Integrate: $I(t) = -\\arctan t + C$. Use $I(\\infty) = 0$ to find $C = \\frac{\\pi}{2}$, then $I(0) = \\frac{\\pi}{2}$.",
+    "hintsMarkdown": "1. Use [Feynman's trick](https://en.wikipedia.org/wiki/Leibniz_integral_rule#Example_4:_Feynman's_trick) by introducing a parameter.\n2. Differentiate with respect to the parameter and evaluate the resulting integral.",
+    "solutionMarkdown": "1. Introduce $I(t) = \\int_0^\\infty \\frac{\\sin x}{x} e^{-tx}\\thinspace dx$ and differentiate w.r.t. $t$: $I'(t) = -\\int_0^\\infty e^{-tx}\\sin x\\thinspace dx$ ([Feynman's trick](https://en.wikipedia.org/wiki/Leibniz_integral_rule#Example_4:_Feynman's_trick)).\n2. The standard result gives $I'(t) = -\\frac{1}{1+t^2}$.\n3. Integrate: $I(t) = -\\arctan t + C$. Use $I(\\infty) = 0$ to find $C = \\frac{\\pi}{2}$, then $I(0) = \\frac{\\pi}{2}$.",
     "answerFormulaLaTeX": "\\frac{\\pi}{2}",
     "isProof": false
   },
@@ -67,7 +71,8 @@
     "title": "The Frullani Integral",
     "descriptionMarkdown": "Evaluate the following integral for constants $a, b > 0$:",
     "mainFormulaLaTeX": "\\int_{0}^{\\infty} \\frac{e^{-ax} - e^{-bx}}{x} \\thinspace  dx",
-    "hintsMarkdown": "1. Write $\\frac{1}{x} = \\int_a^b e^{-xt}\\thinspace dt$ (recognise this as the integral representation of $1/x$ via $e^{-xt}$).\n2. Swap the order of integration ([Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem)); the $x$-integral $\\int_0^\\infty e^{-xt}\\thinspace dx = \\frac{1}{t}$.\n3. Integrate $\\frac{1}{t}$ over $[a,b]$ to get $\\ln(b/a)$.",
+    "hintsMarkdown": "1. Use the identity $\\frac{1}{x} = \\int_0^\\infty e^{-xt} dt$.\n2. Swap the order of integration ([Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem)).",
+    "solutionMarkdown": "1. Write $\\frac{1}{x} = \\int_a^b e^{-xt}\\thinspace dt$ (recognise this as the integral representation of $1/x$ via $e^{-xt}$).\n2. Swap the order of integration ([Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem)); the $x$-integral $\\int_0^\\infty e^{-xt}\\thinspace dx = \\frac{1}{t}$.\n3. Integrate $\\frac{1}{t}$ over $[a,b]$ to get $\\ln(b/a)$.",
     "answerFormulaLaTeX": "\\ln\\negthinspace \\left(\\frac{b}{a}\\right)",
     "isProof": false
   },
@@ -77,7 +82,8 @@
     "title": "Prove Γ(½) = √π",
     "descriptionMarkdown": "The Gamma function is defined as $$\\Gamma(s) = \\int_0^\\infty t^{s-1}e^{-t}\\thinspace dt$$ Prove that:",
     "mainFormulaLaTeX": "\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}",
-    "hintsMarkdown": "1. Write $\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = \\int_0^\\infty t^{-1/2}e^{-t}\\thinspace dt$ and substitute $t = u^2$ (so $dt = 2u\\thinspace du$).\n2. The integral becomes $2\\int_0^\\infty e^{-u^2}\\thinspace du$ — exactly half the [Gaussian integral](https://en.wikipedia.org/wiki/Gaussian_integral) from Day 4.\n3. Use $\\int_{-\\infty}^{\\infty} e^{-u^2}\\thinspace du = \\sqrt{\\pi}$, so $\\int_0^\\infty e^{-u^2}\\thinspace du = \\frac{\\sqrt{\\pi}}{2}$.",
+    "hintsMarkdown": "1. Use the definition of the [Gamma function](https://en.wikipedia.org/wiki/Gamma_function).\n2. Make a substitution to relate the integral to the [Gaussian integral](https://en.wikipedia.org/wiki/Gaussian_integral).",
+    "solutionMarkdown": "1. Write $\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = \\int_0^\\infty t^{-1/2}e^{-t}\\thinspace dt$ and substitute $t = u^2$ (so $dt = 2u\\thinspace du$).\n2. The integral becomes $2\\int_0^\\infty e^{-u^2}\\thinspace du$ — exactly half the [Gaussian integral](https://en.wikipedia.org/wiki/Gaussian_integral) from Day 4.\n3. Use $\\int_{-\\infty}^{\\infty} e^{-u^2}\\thinspace du = \\sqrt{\\pi}$, so $\\int_0^\\infty e^{-u^2}\\thinspace du = \\frac{\\sqrt{\\pi}}{2}$.",
     "answerFormulaLaTeX": "\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = 2 \\cdot \\frac{\\sqrt{\\pi}}{2} = \\sqrt{\\pi}",
     "isProof": true
   },
@@ -87,7 +93,8 @@
     "title": "The Bernoulli Equation",
     "descriptionMarkdown": "Solve the non-linear [first-order ODE](https://en.wikipedia.org/wiki/Ordinary_differential_equation):",
     "mainFormulaLaTeX": "y' - y = -y^2",
-    "hintsMarkdown": "1. Divide through by $y^2$ to get $y^{-2}y' - y^{-1} = -1$ — standard [Bernoulli form](https://en.wikipedia.org/wiki/Bernoulli_differential_equation).\n2. Substitute $v = y^{-1}$; since $v' = -y^{-2}y'$, the equation becomes the **linear** ODE $v' + v = 1$.\n3. Solve $v' + v = 1$ with [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor) $e^t$, then back-substitute $y = 1/v$.",
+    "hintsMarkdown": "1. This is a [Bernoulli differential equation](https://en.wikipedia.org/wiki/Bernoulli_differential_equation).\n2. Use a substitution to transform it into a linear ODE.",
+    "solutionMarkdown": "1. Divide through by $y^2$ to get $y^{-2}y' - y^{-1} = -1$ — standard [Bernoulli form](https://en.wikipedia.org/wiki/Bernoulli_differential_equation).\n2. Substitute $v = y^{-1}$; since $v' = -y^{-2}y'$, the equation becomes the **linear** ODE $v' + v = 1$.\n3. Solve $v' + v = 1$ with [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor) $e^t$, then back-substitute $y = 1/v$.",
     "answerFormulaLaTeX": "y(t) = \\frac{1}{1 + Ce^{-t}}",
     "isProof": false
   },
@@ -97,7 +104,8 @@
     "title": "Resonance",
     "descriptionMarkdown": "Solve the driven oscillator with $y(0) = 0$, $y'(0) = 0$:",
     "mainFormulaLaTeX": "y'' + y = \\cos t",
-    "hintsMarkdown": "1. The homogeneous solution is $y_h = C_1\\cos t + C_2\\sin t$.\n2. Because $\\cos t$ is already in $y_h$ ([resonance](https://en.wikipedia.org/wiki/Mechanical_resonance)!), use $y_p = t(A\\cos t + B\\sin t)$ as the particular trial.\n3. Substitute $y_p$ into the ODE, collect $\\cos t$ and $\\sin t$ terms, match coefficients, then apply the initial conditions.",
+    "hintsMarkdown": "1. Find the homogeneous solution.\n2. The driving frequency is equal to the natural frequency, so this is a case of [resonance](https://en.wikipedia.org/wiki/Mechanical_resonance).\n3. Use the method of [undetermined coefficients](https://en.wikipedia.org/wiki/Method_of_undetermined_coefficients) with a modified trial solution.",
+    "solutionMarkdown": "1. The homogeneous solution is $y_h = C_1\\cos t + C_2\\sin t$.\n2. Because $\\cos t$ is already in $y_h$ ([resonance](https://en.wikipedia.org/wiki/Mechanical_resonance)!), use $y_p = t(A\\cos t + B\\sin t)$ as the particular trial.\n3. Substitute $y_p$ into the ODE, collect $\\cos t$ and $\\sin t$ terms, match coefficients, then apply the initial conditions.",
     "answerFormulaLaTeX": "y(t) = \\tfrac{1}{2}\\thinspace t\\sin t",
     "isProof": false
   },
@@ -107,7 +115,8 @@
     "title": "Clairaut's Equation",
     "descriptionMarkdown": "Find the **general** solution (straight lines) AND the **singular** solution (envelope curve):",
     "mainFormulaLaTeX": "y = x\\thinspace y' + (y')^2",
-    "hintsMarkdown": "1. Let $p = y'$ and differentiate both sides w.r.t. $x$: $p = p + xp' + 2pp'$, which simplifies to $p'(x + 2p) = 0$.\n2. **Case 1:** $p' = 0 \\Rightarrow p = c$ (constant) — substitute back to get the general family $y = cx + c^2$.\n3. **Case 2:** $x + 2p = 0 \\Rightarrow p = -x/2$ — substitute back to find the [singular (envelope) solution](https://en.wikipedia.org/wiki/Envelope_(mathematics)).",
+    "hintsMarkdown": "1. This is a [Clairaut's equation](https://en.wikipedia.org/wiki/Clairaut%27s_equation).\n2. Differentiate both sides with respect to $x$.",
+    "solutionMarkdown": "1. Let $p = y'$ and differentiate both sides w.r.t. $x$: $p = p + xp' + 2pp'$, which simplifies to $p'(x + 2p) = 0$.\n2. **Case 1:** $p' = 0 \\Rightarrow p = c$ (constant) — substitute back to get the general family $y = cx + c^2$.\n3. **Case 2:** $x + 2p = 0 \\Rightarrow p = -x/2$ — substitute back to find the [singular (envelope) solution](https://en.wikipedia.org/wiki/Envelope_(mathematics)).",
     "answerFormulaLaTeX": "\\text{General: } y = cx+c^2 \\qquad \\text{Singular: } y = -\\tfrac{x^2}{4}",
     "isProof": false
   },
@@ -117,7 +126,8 @@
     "title": "Prove Abel's Identity",
     "descriptionMarkdown": "Let $y_1, y_2$ be any two solutions of $y'' + p(x)y' + q(x)y = 0$. **Prove** that the Wronskian $W = y_1 y_2' - y_2 y_1'$ satisfies:",
     "mainFormulaLaTeX": "W(x) = W(x_0)\\thinspace \\exp\\negthinspace \\left(-\\int_{x_0}^x p(t)\\thinspace dt\\right)",
-    "hintsMarkdown": "1. Differentiate $W = y_1 y_2' - y_2 y_1'$ directly; the $y_1'y_2'$ cross-terms cancel, giving $W' = y_1 y_2'' - y_2 y_1''$.\n2. Replace $y_i'' = -p(x)y_i' - q(x)y_i$ (from the ODE); the $q$-terms cancel, leaving $W' = -p(x)W$.\n3. Solve $\\frac{dW}{dx} = -p(x)W$ as a [separable ODE](https://en.wikipedia.org/wiki/Separation_of_variables): $W(x) = W(x_0)\\thinspace e^{-\\int_{x_0}^{x} p(t)\\thinspace dt}$.",
+    "hintsMarkdown": "1. Differentiate the [Wronskian](https://en.wikipedia.org/wiki/Wronskian).\n2. Use the fact that $y_1$ and $y_2$ are solutions to the ODE.",
+    "solutionMarkdown": "1. Differentiate $W = y_1 y_2' - y_2 y_1'$ directly; the $y_1'y_2'$ cross-terms cancel, giving $W' = y_1 y_2'' - y_2 y_1''$.\n2. Replace $y_i'' = -p(x)y_i' - q(x)y_i$ (from the ODE); the $q$-terms cancel, leaving $W' = -p(x)W$.\n3. Solve $\\frac{dW}{dx} = -p(x)W$ as a [separable ODE](https://en.wikipedia.org/wiki/Separation_of_variables): $W(x) = W(x_0)\\thinspace e^{-\\int_{x_0}^{x} p(t)\\thinspace dt}$.",
     "answerFormulaLaTeX": "W' = -p(x)W \\;\\Longrightarrow\\; W(x) = W(x_0)\\thinspace e^{-\\int_{x_0}^{x} p(t)\\thinspace dt}",
     "isProof": true
   },
@@ -127,7 +137,8 @@
     "title": "Imaginary Powers",
     "descriptionMarkdown": "Find the **principal value** of $i$ raised to the power of $i$:",
     "mainFormulaLaTeX": "i^{\\thinspace i}",
-    "hintsMarkdown": "1. Express $i$ in polar form: $i = e^{i\\pi/2}$ (from [Euler's formula](https://en.wikipedia.org/wiki/Euler%27s_formula) with $x = \\pi/2$).\n2. Raise to the power $i$: $i^i = \\left(e^{i\\pi/2}\\right)^i = e^{i^2 \\pi/2}$.\n3. Simplify using $i^2 = -1$: the result is a surprisingly real number.",
+    "hintsMarkdown": "1. Use the identity $a^b = e^{b \\ln a}$.\n2. Express $i$ in [polar form](https://en.wikipedia.org/wiki/Polar_coordinate_system).",
+    "solutionMarkdown": "1. Express $i$ in polar form: $i = e^{i\\pi/2}$ (from [Euler's formula](https://en.wikipedia.org/wiki/Euler%27s_formula) with $x = \\pi/2$).\n2. Raise to the power $i$: $i^i = \\left(e^{i\\pi/2}\\right)^i = e^{i^2 \\pi/2}$.\n3. Simplify using $i^2 = -1$: the result is a surprisingly real number.",
     "answerFormulaLaTeX": "i^i = e^{-\\pi/2} \\approx 0.2079",
     "isProof": false
   },
@@ -137,7 +148,8 @@
     "title": "The Rational Semicircle Contour",
     "descriptionMarkdown": "Evaluate using the Residue Theorem over a semicircular contour in the upper half-plane:",
     "mainFormulaLaTeX": "\\int_{-\\infty}^{\\infty} \\frac{1}{x^4 + 1} \\thinspace  dx",
-    "hintsMarkdown": "1. Find poles of $\\frac{1}{z^4+1}$ by solving $z^4 = e^{i\\pi}$; the four roots are $e^{i\\pi(2k+1)/4}$ for $k = 0,1,2,3$.\n2. Only $z_1 = e^{i\\pi/4}$ and $z_2 = e^{3i\\pi/4}$ lie in the upper half-plane ($\\mathrm{Im}(z) > 0$).\n3. Compute residues via $\\mathrm{Res}_{z=z_k} = \\frac{1}{4z_k^3}$, sum, and apply $\\int_{-\\infty}^\\infty = 2\\pi i \\sum\\mathrm{Res}$ ([Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem)).",
+    "hintsMarkdown": "1. Use the [Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem).\n2. Find the poles of the integrand in the upper half-plane.",
+    "solutionMarkdown": "1. Find poles of $\\frac{1}{z^4+1}$ by solving $z^4 = e^{i\\pi}$; the four roots are $e^{i\\pi(2k+1)/4}$ for $k = 0,1,2,3$.\n2. Only $z_1 = e^{i\\pi/4}$ and $z_2 = e^{3i\\pi/4}$ lie in the upper half-plane ($\\mathrm{Im}(z) > 0$).\n3. Compute residues via $\\mathrm{Res}_{z=z_k} = \\frac{1}{4z_k^3}$, sum, and apply $\\int_{-\\infty}^\\infty = 2\\pi i \\sum\\mathrm{Res}$ ([Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem)).",
     "answerFormulaLaTeX": "\\frac{\\pi}{\\sqrt{2}}",
     "isProof": false
   },
@@ -147,7 +159,8 @@
     "title": "The Unit Circle Contour",
     "descriptionMarkdown": "Evaluate for real constant $a > 1$:",
     "mainFormulaLaTeX": "\\int_{0}^{2\\pi} \\frac{1}{a + \\cos\\theta} \\thinspace  d\\theta",
-    "hintsMarkdown": "1. Substitute $z = e^{i\\theta}$: then $\\cos\\theta = \\frac{z + z^{-1}}{2}$ and $d\\theta = \\frac{dz}{iz}$.\n2. Rewrite as $\\oint_{|z|=1} \\frac{2}{z^2 + 2az + 1}\\thinspace \\frac{dz}{i}$; find the poles and identify which one satisfies $|z| < 1$.\n3. Compute the residue at that pole and apply the [Residue Theorem](https://en.wikipedia.org/wiki/Residue_theorem): $\\int = 2\\pi i \\cdot \\mathrm{Res}$.",
+    "hintsMarkdown": "1. Use the substitution $z = e^{i\\theta}$ to convert the integral into a contour integral.\n2. Use the [Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem).",
+    "solutionMarkdown": "1. Substitute $z = e^{i\\theta}$: then $\\cos\\theta = \\frac{z + z^{-1}}{2}$ and $d\\theta = \\frac{dz}{iz}$.\n2. Rewrite as $\\oint_{|z|=1} \\frac{2}{z^2 + 2az + 1}\\thinspace \\frac{dz}{i}$; find the poles and identify which one satisfies $|z| < 1$.\n3. Compute the residue at that pole and apply the [Residue Theorem](https://en.wikipedia.org/wiki/Residue_theorem): $\\int = 2\\pi i \\cdot \\mathrm{Res}$.",
     "answerFormulaLaTeX": "\\frac{2\\pi}{\\sqrt{a^2 - 1}}",
     "isProof": false
   },
@@ -157,7 +170,8 @@
     "title": "Prove the Basel Identity",
     "descriptionMarkdown": "Using the partial fraction expansion of $\\pi\\cot(\\pi z)$, **prove:**",
     "mainFormulaLaTeX": "\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}",
-    "hintsMarkdown": "1. $\\pi\\cot(\\pi z)$ has simple poles at every integer $n$ with residue 1, giving: $\\pi\\cot(\\pi z) = \\frac{1}{z} + \\sum_{n=1}^\\infty\\negthinspace \\left(\\frac{1}{z-n} + \\frac{1}{z+n}\\right)$ ([Mittag-Leffler's theorem](https://en.wikipedia.org/wiki/Mittag-Leffler%27s_theorem)).\n2. Rewrite each pair as $\\frac{2z}{z^2-n^2}$ and expand: the coefficient of $z$ in the sum is $-2\\sum_{n=1}^\\infty \\frac{1}{n^2}$.\n3. From the Laurent series $\\pi\\cot(\\pi z) = \\frac{1}{z} - \\frac{\\pi^2}{3}z - \\cdots$, equate coefficients of $z$.",
+    "hintsMarkdown": "1. Use the [Mittag-Leffler expansion](https://en.wikipedia.org/wiki/Mittag-Leffler%27s_theorem) of $\\pi\\cot(\\pi z)$.\n2. Compare the coefficients of the [Laurent series](https://en.wikipedia.org/wiki/Laurent_series) of $\\pi\\cot(\\pi z)$ with the expansion.",
+    "solutionMarkdown": "1. $\\pi\\cot(\\pi z)$ has simple poles at every integer $n$ with residue 1, giving: $\\pi\\cot(\\pi z) = \\frac{1}{z} + \\sum_{n=1}^\\infty\\negthinspace \\left(\\frac{1}{z-n} + \\frac{1}{z+n}\\right)$ ([Mittag-Leffler's theorem](https://en.wikipedia.org/wiki/Mittag-Leffler%27s_theorem)).\n2. Rewrite each pair as $\\frac{2z}{z^2-n^2}$ and expand: the coefficient of $z$ in the sum is $-2\\sum_{n=1}^\\infty \\frac{1}{n^2}$.\n3. From the Laurent series $\\pi\\cot(\\pi z) = \\frac{1}{z} - \\frac{\\pi^2}{3}z - \\cdots$, equate coefficients of $z$.",
     "answerFormulaLaTeX": "-2\\sum_{n=1}^\\infty\\frac{1}{n^2} = -\\frac{\\pi^2}{3} \\;\\Longrightarrow\\; \\sum_{n=1}^\\infty\\frac{1}{n^2} = \\frac{\\pi^2}{6}",
     "isProof": true
   },
@@ -167,7 +181,8 @@
     "title": "The Plucked String  (Wave Equation)",
     "descriptionMarkdown": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = \\sin x$ and $u_t(x,0) = 0$:",
     "mainFormulaLaTeX": "u_{tt} = c^2\\thinspace u_{xx}",
-    "hintsMarkdown": "1. Apply [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula): $u(x,t) = \\frac{1}{2}[f(x+ct) + f(x-ct)] + \\frac{1}{2c}\\int_{x-ct}^{x+ct} g(s)\\thinspace ds$.\n2. Here $f(x) = \\sin x$ and $g(x) = 0$, so the integral term vanishes.\n3. Apply the sum-to-product identity: $\\sin(x+ct) + \\sin(x-ct) = 2\\sin x\\cos(ct)$.",
+    "hintsMarkdown": "1. This is a [wave equation](https://en.wikipedia.org/wiki/Wave_equation).\n2. Use [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula).",
+    "solutionMarkdown": "1. Apply [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula): $u(x,t) = \\frac{1}{2}[f(x+ct) + f(x-ct)] + \\frac{1}{2c}\\int_{x-ct}^{x+ct} g(s)\\thinspace ds$.\n2. Here $f(x) = \\sin x$ and $g(x) = 0$, so the integral term vanishes.\n3. Apply the sum-to-product identity: $\\sin(x+ct) + \\sin(x-ct) = 2\\sin x\\cos(ct)$.",
     "answerFormulaLaTeX": "u(x,t) = \\sin(x)\\cos(ct)",
     "isProof": false
   },
@@ -177,7 +192,8 @@
     "title": "Cooling on a Rod  (Heat Equation)",
     "descriptionMarkdown": "Solve $u_t = u_{xx}$ on $[0,\\pi]$ with $u(0,t)=u(\\pi,t)=0$ and initial condition:",
     "mainFormulaLaTeX": "u(x,0) = 3\\sin(2x) - 5\\sin(5x)",
-    "hintsMarkdown": "1. Separate variables: $u = X(x)T(t)$. The boundary conditions force $X(0) = X(\\pi) = 0$.\n2. Eigenfunctions satisfying the BCs are $\\sin(nx)$ with eigenvalue $\\lambda_n = n^2$; time factor $T_n(t) = e^{-n^2 t}$ ([Sturm-Liouville theory](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory)).\n3. The initial data is already a sum of eigenfunctions — read off coefficients $b_2 = 3$ and $b_5 = -5$ directly.",
+    "hintsMarkdown": "1. This is a [heat equation](https://en.wikipedia.org/wiki/Heat_equation).\n2. Use the method of [separation of variables](https://en.wikipedia.org/wiki/Separation_of_variables).",
+    "solutionMarkdown": "1. Separate variables: $u = X(x)T(t)$. The boundary conditions force $X(0) = X(\\pi) = 0$.\n2. Eigenfunctions satisfying the BCs are $\\sin(nx)$ with eigenvalue $\\lambda_n = n^2$; time factor $T_n(t) = e^{-n^2 t}$ ([Sturm-Liouville theory](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory)).\n3. The initial data is already a sum of eigenfunctions — read off coefficients $b_2 = 3$ and $b_5 = -5$ directly.",
     "answerFormulaLaTeX": "u(x,t) = 3e^{-4t}\\sin(2x) - 5e^{-25t}\\sin(5x)",
     "isProof": false
   },
@@ -187,7 +203,8 @@
     "title": "Steady State on a Disk  (Laplace's Equation)",
     "descriptionMarkdown": "Solve $\\nabla^2 u = 0$ on the unit disk $r \\le 1$ with boundary condition $u(1,\\theta) = \\sin^2\\theta$:",
     "mainFormulaLaTeX": "\\nabla^2 u = 0",
-    "hintsMarkdown": "1. The general bounded solution in polar form is $u = A_0 + \\sum_{n=1}^\\infty r^n(A_n\\cos n\\theta + B_n\\sin n\\theta)$.\n2. Rewrite the BC using $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$.\n3. Match at $r=1$ term-by-term ([Fourier series](https://en.wikipedia.org/wiki/Fourier_series)): $A_0 = \\frac{1}{2}$, $A_2 = -\\frac{1}{2}$, all others zero.",
+    "hintsMarkdown": "1. This is [Laplace's equation](https://en.wikipedia.org/wiki/Laplace%27s_equation) in polar coordinates.\n2. The general solution is a [Fourier series](https://en.wikipedia.org/wiki/Fourier_series).\n3. Use the identity $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$.",
+    "solutionMarkdown": "1. The general bounded solution in polar form is $u = A_0 + \\sum_{n=1}^\\infty r^n(A_n\\cos n\\theta + B_n\\sin n\\theta)$.\n2. Rewrite the BC using $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$.\n3. Match at $r=1$ term-by-term ([Fourier series](https://en.wikipedia.org/wiki/Fourier_series)): $A_0 = \\frac{1}{2}$, $A_2 = -\\frac{1}{2}$, all others zero.",
     "answerFormulaLaTeX": "u(r,\\theta) = \\frac{1}{2} - \\frac{1}{2}\\thinspace r^2\\cos(2\\theta)",
     "isProof": false
   },
@@ -197,7 +214,8 @@
     "title": "Prove Green's First Identity",
     "descriptionMarkdown": "For smooth $u$, $v$ on a bounded domain $\\Omega \\subset \\mathbb{R}^3$ with smooth boundary $\\partial\\Omega$, **prove:**",
     "mainFormulaLaTeX": "\\int_\\Omega u\\thinspace \\nabla^2 v\\thinspace dV = \\oint_{\\partial\\Omega} u\\thinspace \\frac{\\partial v}{\\partial n}\\thinspace dS - \\int_\\Omega \\nabla u \\cdot \\nabla v\\thinspace dV",
-    "hintsMarkdown": "1. Start from the **divergence product rule**: $\\nabla \\cdot (u\\nabla v) = \\nabla u \\cdot \\nabla v + u\\thinspace \\nabla^2 v$.\n2. Rearrange: $u\\thinspace \\nabla^2 v = \\nabla\\cdot(u\\nabla v) - \\nabla u \\cdot \\nabla v$, then integrate both sides over $\\Omega$.\n3. Apply the [Divergence Theorem](https://en.wikipedia.org/wiki/Divergence_theorem) to $\\int_\\Omega \\nabla\\cdot(u\\nabla v)\\thinspace dV = \\oint_{\\partial\\Omega} u\\thinspace \\nabla v \\cdot \\hat{n}\\thinspace dS$.",
+    "hintsMarkdown": "1. Start with the product rule for divergence.\n2. Apply the [Divergence Theorem](https://en.wikipedia.org/wiki/Divergence_theorem).",
+    "solutionMarkdown": "1. Start from the **divergence product rule**: $\\nabla \\cdot (u\\nabla v) = \\nabla u \\cdot \\nabla v + u\\thinspace \\nabla^2 v$.\n2. Rearrange: $u\\thinspace \\nabla^2 v = \\nabla\\cdot(u\\nabla v) - \\nabla u \\cdot \\nabla v$, then integrate both sides over $\\Omega$.\n3. Apply the [Divergence Theorem](https://en.wikipedia.org/wiki/Divergence_theorem) to $\\int_\\Omega \\nabla\\cdot(u\\nabla v)\\thinspace dV = \\oint_{\\partial\\Omega} u\\thinspace \\nabla v \\cdot \\hat{n}\\thinspace dS$.",
     "answerFormulaLaTeX": "\\nabla\\cdot(u\\nabla v) = \\nabla u\\cdot\\nabla v + u\\nabla^2 v \\xrightarrow{\\text{Div. Thm.}} \\text{QED}",
     "isProof": true
   },
@@ -207,7 +225,8 @@
     "title": "The Separable Logistic Equation",
     "descriptionMarkdown": "Solve the logistic ODE with $y(0) = 2$:",
     "mainFormulaLaTeX": "\\frac{dy}{dx} = y(1 - y)",
-    "hintsMarkdown": "1. Separate variables: $\\frac{dy}{y(1-y)} = dx$.\n2. Apply [partial fractions](https://en.wikipedia.org/wiki/Partial_fraction_decomposition): $\\frac{1}{y(1-y)} = \\frac{1}{y} + \\frac{1}{1-y}$.\n3. Integrate both sides, exponentiate to solve for $y$ explicitly, then use $y(0) = 2$.",
+    "hintsMarkdown": "1. This is a [separable differential equation](https://en.wikipedia.org/wiki/Separation_of_variables).\n2. Use [partial fraction decomposition](https://en.wikipedia.org/wiki/Partial_fraction_decomposition).",
+    "solutionMarkdown": "1. Separate variables: $\\frac{dy}{y(1-y)} = dx$.\n2. Apply [partial fractions](https://en.wikipedia.org/wiki/Partial_fraction_decomposition): $\\frac{1}{y(1-y)} = \\frac{1}{y} + \\frac{1}{1-y}$.\n3. Integrate both sides, exponentiate to solve for $y$ explicitly, then use $y(0) = 2$.",
     "answerFormulaLaTeX": "y(x) = \\frac{2e^x}{2e^x - 1}",
     "isProof": false
   },
@@ -217,7 +236,8 @@
     "title": "The Integrating Factor",
     "descriptionMarkdown": "Solve with $y(0) = 1$:",
     "mainFormulaLaTeX": "y' - 2xy = e^{x^2}",
-    "hintsMarkdown": "1. Compute the [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor): $\\mu(x) = e^{\\int{-2x}\\thinspace dx} = e^{-x^2}$.\n2. Multiply both sides by $\\mu$; the LHS becomes $\\frac{d}{dx}\\negthinspace \\left[y\\thinspace e^{-x^2}\\right]$.\n3. Integrate the RHS (which becomes $1$), yielding $y\\thinspace e^{-x^2} = x + C$; apply $y(0) = 1$.",
+    "hintsMarkdown": "1. This is a linear first-order ODE.\n2. Use an [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor).",
+    "solutionMarkdown": "1. Compute the [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor): $\\mu(x) = e^{\\int{-2x}\\thinspace dx} = e^{-x^2}$.\n2. Multiply both sides by $\\mu$; the LHS becomes $\\frac{d}{dx}\\negthinspace \\left[y\\thinspace e^{-x^2}\\right]$.\n3. Integrate the RHS (which becomes $1$), yielding $y\\thinspace e^{-x^2} = x + C$; apply $y(0) = 1$.",
     "answerFormulaLaTeX": "y(x) = (x+1)\\thinspace e^{x^2}",
     "isProof": false
   },
@@ -227,7 +247,8 @@
     "title": "The Exact Equation",
     "descriptionMarkdown": "Show this equation is exact and find the general solution $F(x,y) = C$:",
     "mainFormulaLaTeX": "(3x^2y + y^3)\\thinspace dx + (x^3 + 3xy^2)\\thinspace dy = 0",
-    "hintsMarkdown": "1. Let $M = 3x^2y+y^3$, $N = x^3+3xy^2$; check $\\frac{\\partial M}{\\partial y} = 3x^2+3y^2 = \\frac{\\partial N}{\\partial x}$ ✓ ([Clairaut's theorem](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives)).\n2. Integrate $M$ w.r.t. $x$: $F = x^3y + xy^3 + h(y)$.\n3. Differentiate $F$ w.r.t. $y$ and set equal to $N$: $x^3 + 3xy^2 + h'(y) = x^3 + 3xy^2$, so $h'(y) = 0$.",
+    "hintsMarkdown": "1. Check if the equation is an [exact differential equation](https://en.wikipedia.org/wiki/Exact_differential_equation).\n2. If it is, find the potential function $F(x,y)$.",
+    "solutionMarkdown": "1. Let $M = 3x^2y+y^3$, $N = x^3+3xy^2$; check $\\frac{\\partial M}{\\partial y} = 3x^2+3y^2 = \\frac{\\partial N}{\\partial x}$ ✓ ([Clairaut's theorem](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives)).\n2. Integrate $M$ w.r.t. $x$: $F = x^3y + xy^3 + h(y)$.\n3. Differentiate $F$ w.r.t. $y$ and set equal to $N$: $x^3 + 3xy^2 + h'(y) = x^3 + 3xy^2$, so $h'(y) = 0$.",
     "answerFormulaLaTeX": "x^3 y + x y^3 = C",
     "isProof": false
   },
@@ -237,7 +258,8 @@
     "title": "Prove the Integrating Factor Identity",
     "descriptionMarkdown": "For $y' + p(x)y = g(x)$, **prove** that multiplying by $\\mu(x) = e^{\\int p\\thinspace dx}$ gives a perfect derivative:",
     "mainFormulaLaTeX": "\\mu\\thinspace y' + \\mu\\thinspace p(x)\\thinspace y = \\frac{d}{dx}\\negthinspace \\left[\\mu\\thinspace y\\right]",
-    "hintsMarkdown": "1. Write $\\mu = e^{P(x)}$ where $P'(x) = p(x)$; differentiate $\\mu$ to get $\\mu'(x) = p(x)\\mu(x)$.\n2. Expand $\\frac{d}{dx}[\\mu y] = \\mu'y + \\mu y'$ by the [product rule](https://en.wikipedia.org/wiki/Product_rule).\n3. Substitute $\\mu' = p(x)\\mu$: the result is $p(x)\\mu y + \\mu y' = \\mu(y' + p(x)y)$ — exactly $\\mu$ times the LHS of the ODE.",
+    "hintsMarkdown": "1. Use the [product rule](https://en.wikipedia.org/wiki/Product_rule) for differentiation.\n2. Use the chain rule to differentiate the integrating factor.",
+    "solutionMarkdown": "1. Write $\\mu = e^{P(x)}$ where $P'(x) = p(x)$; differentiate $\\mu$ to get $\\mu'(x) = p(x)\\mu(x)$.\n2. Expand $\\frac{d}{dx}[\\mu y] = \\mu'y + \\mu y'$ by the [product rule](https://en.wikipedia.org/wiki/Product_rule).\n3. Substitute $\\mu' = p(x)\\mu$: the result is $p(x)\\mu y + \\mu y' = \\mu(y' + p(x)y)$ — exactly $\\mu$ times the LHS of the ODE.",
     "answerFormulaLaTeX": "\\frac{d}{dx}[\\mu y] = p\\mu y + \\mu y' = \\mu(y' + py) \\quad \\mathrm{(QED)}",
     "isProof": true
   },
@@ -247,7 +269,8 @@
     "title": "The Characteristic Equation",
     "descriptionMarkdown": "Solve with $y(0) = 1$ and $y'(0) = 2$:",
     "mainFormulaLaTeX": "y'' - 5y' + 6y = 0",
-    "hintsMarkdown": "1. Assume $y = e^{rx}$ to obtain the [characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)) $r^2 - 5r + 6 = 0$.\n2. Factor: $(r-2)(r-3) = 0$, giving $r_1 = 2$, $r_2 = 3$; general solution $y = C_1 e^{2x} + C_2 e^{3x}$.\n3. Differentiate, apply both initial conditions as a $2\\times 2$ system, and solve for $C_1$, $C_2$.",
+    "hintsMarkdown": "1. This is a homogeneous linear second-order ODE with constant coefficients.\n2. Find the roots of the [characteristic equation](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)).",
+    "solutionMarkdown": "1. Assume $y = e^{rx}$ to obtain the [characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)) $r^2 - 5r + 6 = 0$.\n2. Factor: $(r-2)(r-3) = 0$, giving $r_1 = 2$, $r_2 = 3$; general solution $y = C_1 e^{2x} + C_2 e^{3x}$.\n3. Differentiate, apply both initial conditions as a $2\\times 2$ system, and solve for $C_1$, $C_2$.",
     "answerFormulaLaTeX": "y(x) = 4e^{3x} - 3e^{2x}",
     "isProof": false
   },
@@ -257,7 +280,8 @@
     "title": "Resonance and Undetermined Coefficients",
     "descriptionMarkdown": "Find the general solution (watch for resonance!):",
     "mainFormulaLaTeX": "y'' + 4y = \\sin(2x)",
-    "hintsMarkdown": "1. Homogeneous solution: $y_h = C_1\\cos(2x) + C_2\\sin(2x)$.\n2. Since $\\sin(2x) \\in y_h$ ([resonance](https://en.wikipedia.org/wiki/Mechanical_resonance)!), multiply the trial by $x$: use $y_p = x(A\\cos 2x + B\\sin 2x)$.\n3. Substitute $y_p$ into the ODE, expand, collect $\\cos(2x)$ and $\\sin(2x)$ terms, and match coefficients.",
+    "hintsMarkdown": "1. Find the homogeneous solution.\n2. The driving frequency is equal to the natural frequency, so this is a case of [resonance](https://en.wikipedia.org/wiki/Mechanical_resonance).\n3. Use the method of [undetermined coefficients](https://en.wikipedia.org/wiki/Method_of_undetermined_coefficients) with a modified trial solution.",
+    "solutionMarkdown": "1. Homogeneous solution: $y_h = C_1\\cos(2x) + C_2\\sin(2x)$.\n2. Since $\\sin(2x) \\in y_h$ ([resonance](https://en.wikipedia.org/wiki/Mechanical_resonance)!), multiply the trial by $x$: use $y_p = x(A\\cos 2x + B\\sin 2x)$.\n3. Substitute $y_p$ into the ODE, expand, collect $\\cos(2x)$ and $\\sin(2x)$ terms, and match coefficients.",
     "answerFormulaLaTeX": "y(x) = C_1\\cos(2x) + C_2\\sin(2x) - \\tfrac{x}{4}\\cos(2x)",
     "isProof": false
   },
@@ -267,7 +291,8 @@
     "title": "Variation of Parameters",
     "descriptionMarkdown": "Find a particular solution via variation of parameters (given $y_h = C_1\\cos x + C_2\\sin x$):",
     "mainFormulaLaTeX": "y'' + y = \\sec x",
-    "hintsMarkdown": "1. With $y_1 = \\cos x$, $y_2 = \\sin x$, compute the Wronskian $W = y_1 y_2' - y_2 y_1' = 1$.\n2. [Variation-of-parameters](https://en.wikipedia.org/wiki/Variation_of_parameters) formulas: $u_1' = -\\frac{y_2\\sec x}{W} = -\\tan x$ and $u_2' = \\frac{y_1\\sec x}{W} = 1$.\n3. Integrate: $u_1 = \\ln|\\cos x|$, $u_2 = x$; then $y_p = u_1 y_1 + u_2 y_2$.",
+    "hintsMarkdown": "1. Use the method of [variation of parameters](https://en.wikipedia.org/wiki/Variation_of_parameters).\n2. The Wronskian will be useful.",
+    "solutionMarkdown": "1. With $y_1 = \\cos x$, $y_2 = \\sin x$, compute the Wronskian $W = y_1 y_2' - y_2 y_1' = 1$.\n2. [Variation-of-parameters](https://en.wikipedia.org/wiki/Variation_of_parameters) formulas: $u_1' = -\\frac{y_2\\sec x}{W} = -\\tan x$ and $u_2' = \\frac{y_1\\sec x}{W} = 1$.\n3. Integrate: $u_1 = \\ln|\\cos x|$, $u_2 = x$; then $y_p = u_1 y_1 + u_2 y_2$.",
     "answerFormulaLaTeX": "y_p(x) = x\\sin x + \\cos x\\thinspace \\ln|\\cos x|",
     "isProof": false
   },
@@ -277,7 +302,8 @@
     "title": "Prove the Repeated Root Case",
     "descriptionMarkdown": "For $ay''+by'+cy=0$ with a **repeated** characteristic root $r_0$, **prove** that $y_2 = xe^{r_0 x}$ is a solution:",
     "mainFormulaLaTeX": "y_2(x) = x\\thinspace e^{r_0 x}",
-    "hintsMarkdown": "1. Compute $y_2' = (1+r_0 x)e^{r_0 x}$ and $y_2'' = (2r_0+r_0^2 x)e^{r_0 x}$ by differentiating twice.\n2. Substitute into $ay_2''+by_2'+cy_2$, factor out $e^{r_0 x}$, and group terms in $x$ and constant terms separately.\n3. The $x$-coefficient is $ar_0^2+br_0+c = 0$ (root condition); the constant is $2ar_0+b = 0$ (repeated root: $r_0 = -\\frac{b}{2a}$).",
+    "hintsMarkdown": "1. Differentiate $y_2(x)$ twice.\n2. Substitute the derivatives into the ODE and use the fact that $r_0$ is a repeated root of the characteristic equation.",
+    "solutionMarkdown": "1. Compute $y_2' = (1+r_0 x)e^{r_0 x}$ and $y_2'' = (2r_0+r_0^2 x)e^{r_0 x}$ by differentiating twice.\n2. Substitute into $ay_2''+by_2'+cy_2$, factor out $e^{r_0 x}$, and group terms in $x$ and constant terms separately.\n3. The $x$-coefficient is $ar_0^2+br_0+c = 0$ (root condition); the constant is $2ar_0+b = 0$ (repeated root: $r_0 = -\\frac{b}{2a}$).",
     "answerFormulaLaTeX": "ay_2''+by_2'+cy_2 = e^{r_0 x}\\negthinspace \\bigl[\\underbrace{(ar_0^2+br_0+c)}_{=\\thinspace 0}\\cdot x + \\underbrace{(2ar_0+b)}_{=\\thinspace 0}\\bigr] = 0",
     "isProof": true
   }
