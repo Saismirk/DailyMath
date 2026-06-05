@@ -138,6 +138,15 @@
     <script>
         const { createApp, ref, computed } = Vue;
 
+        // Configure marked.js to open links in a new tab
+        marked.use({
+            renderer: {
+                link(href, title, text) {
+                    return `<a target="_blank" href="${href}" title="${title || ''}">${text}</a>`;
+                }
+            }
+        });
+
         // Custom Vue Directive to handle Math rendering safely on DOM updates
         const mathDirective = {
             mounted(el, binding) { renderMath(el, binding.value); },
