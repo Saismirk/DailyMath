@@ -1,7 +1,7 @@
 [
   {
     "day": 1,
-    "topic": "[Topic 1  ·  Limits and Derivatives](https://en.wikipedia.org/wiki/Limit_of_a_function)",
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The High-Order Limit",
     "descriptionMarkdown": "Evaluate the following limit:",
     "mainFormulaLaTeX": "\\lim_{x \\to 0} \\frac{\\sin x - x + \\frac{x^3}{6}}{x^5}",
@@ -11,7 +11,7 @@
   },
   {
     "day": 2,
-    "topic": "[Topic 1  ·  Limits and Derivatives](https://en.wikipedia.org/wiki/Limit_of_a_function)",
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The Exponential Squeeze",
     "descriptionMarkdown": "Evaluate the following limit:",
     "mainFormulaLaTeX": "\\lim_{x \\to 0} \\left(\\frac{\\sin x}{x}\\right)^{1/x^2}",
@@ -21,7 +21,7 @@
   },
   {
     "day": 3,
-    "topic": "[Topic 1  ·  Limits and Derivatives](https://en.wikipedia.org/wiki/Derivative)",
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The 100th Derivative",
     "descriptionMarkdown": "Find $f^{(100)}(0)$ for:",
     "mainFormulaLaTeX": "f(x) = x^2 e^x",
@@ -31,7 +31,7 @@
   },
   {
     "day": 22,
-    "topic": "[Topic 1  ·  Limits and Derivatives](https://en.wikipedia.org/wiki/Euler%27s_formula)",
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "Prove Euler's Formula",
     "descriptionMarkdown": "Using only power series, **prove** Euler's formula:",
     "mainFormulaLaTeX": "e^{ix} = \\cos x + i\\sin x",
@@ -53,7 +53,7 @@
     "day": 5,
     "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Dirichlet_integral)",
     "title": "Feynman's Favourite Trick",
-    "descriptionMarkdown": "Evaluate the Dirichlet integral:",
+    "descriptionMarkdown": "Evaluate the [Dirichlet integral](https://en.wikipedia.org/wiki/Dirichlet_integral):",
     "mainFormulaLaTeX": "\\int_{0}^{\\infty} \\frac{\\sin x}{x} \\thinspace  dx",
     "hintsMarkdown": "1. Introduce $I(t) = \\int_0^\\infty \\frac{\\sin x}{x} e^{-tx}\\thinspace dx$ and differentiate w.r.t. $t$: $I'(t) = -\\int_0^\\infty e^{-tx}\\sin x\\thinspace dx$ ([Feynman's trick](https://en.wikipedia.org/wiki/Leibniz_integral_rule#Example_4:_Feynman's_trick)).\n2. The standard result gives $I'(t) = -\\frac{1}{1+t^2}$.\n3. Integrate: $I(t) = -\\arctan t + C$. Use $I(\\infty) = 0$ to find $C = \\frac{\\pi}{2}$, then $I(0) = \\frac{\\pi}{2}$.",
     "answerFormulaLaTeX": "\\frac{\\pi}{2}",
@@ -71,7 +71,7 @@
   },
   {
     "day": 23,
-    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gamma_function)",
+    "topic": "Topic 2  ·  Advanced Integration",
     "title": "Prove Γ(½) = √π",
     "descriptionMarkdown": "The Gamma function is defined as $$\\Gamma(s) = \\int_0^\\infty t^{s-1}e^{-t}\\thinspace dt$$ Prove that:",
     "mainFormulaLaTeX": "\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}",
@@ -83,7 +83,7 @@
     "day": 7,
     "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "The Bernoulli Equation",
-    "descriptionMarkdown": "Solve the non-linear first-order ODE:",
+    "descriptionMarkdown": "Solve the non-linear [first-order ODE](https://en.wikipedia.org/wiki/Ordinary_differential_equation):",
     "mainFormulaLaTeX": "y' - y = -y^2",
     "hintsMarkdown": "1. Divide through by $y^2$ to get $y^{-2}y' - y^{-1} = -1$ — standard [Bernoulli form](https://en.wikipedia.org/wiki/Bernoulli_differential_equation).\n2. Substitute $v = y^{-1}$; since $v' = -y^{-2}y'$, the equation becomes the **linear** ODE $v' + v = 1$.\n3. Solve $v' + v = 1$ with [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor) $e^t$, then back-substitute $y = 1/v$.",
     "answerFormulaLaTeX": "y(t) = \\frac{1}{1 + Ce^{-t}}",
