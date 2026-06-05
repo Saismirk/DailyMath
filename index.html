@@ -42,6 +42,7 @@
         .md-content ol { list-style-type: decimal; margin-left: 1.25rem; margin-bottom: 0.75rem; }
         .md-content li { margin-bottom: 0.35rem; }
         .md-content strong { color: #ffffff; font-weight: 600; }
+        .md-content a { color: #7fb8e8; text-decoration: underline; }
         
         /* KaTeX specific overrides for better inline blending */
         .katex { font-size: 1.1em; }
@@ -55,8 +56,7 @@
         <!-- ── Header ────────────────────────────────────────────────── -->
         <div class="bg-[#242424] px-[28px] py-[14px] flex justify-between items-center shrink-0">
             <div class="flex flex-col gap-[3px]">
-                <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px]">
-                    {{ currentQuestion.topic }}
+                <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px] md-content" v-html="topicHtml">
                 </div>
                 <div class="text-white text-[21px] font-semibold">
                     {{ currentQuestion.title }}
@@ -183,6 +183,7 @@
 
                 // --- Markdown & LaTeX Generators ---
                 // We parse the Markdown into HTML string first, then KaTeX renders the DOM nodes via our v-math directive
+                const topicHtml = computed(() => marked.parse(currentQuestion.value.topic));
                 const descriptionHtml = computed(() => marked.parse(currentQuestion.value.descriptionMarkdown));
                 const hintsHtml = computed(() => marked.parse(currentQuestion.value.hintsMarkdown));
                 
@@ -216,7 +217,7 @@
                 return {
                     currentQuestion, progressText, canGoPrev, canGoNext,
                     hintsVisible, answerVisible, hintsButtonText, answerButtonText,
-                    descriptionHtml, hintsHtml, mainFormulaHtml, answerFormulaHtml,
+                    topicHtml, descriptionHtml, hintsHtml, mainFormulaHtml, answerFormulaHtml,
                     prev, next, toggleHints, toggleAnswer
                 };
             }
