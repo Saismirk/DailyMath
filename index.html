@@ -96,6 +96,13 @@
                     <div class="md-content text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
                 </div>
 
+                <!-- Solution panel -->
+                <div v-show="solutionVisible" 
+                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
+                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">SOLUTION</div>
+                    <div class="md-content text-[14.5px] text-gray-300" v-math="solutionHtml"></div>
+                </div>
+
                 <!-- Answer panel -->
                 <div v-show="answerVisible" 
                      class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[8px]">
@@ -119,6 +126,10 @@
                 <button @click="toggleHints" 
                         class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
                     {{ hintsButtonText }}
+                </button>
+                <button @click="toggleSolution" v-if="currentQuestion.solutionMarkdown"
+                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                    {{ solutionButtonText }}
                 </button>
                 <button @click="toggleAnswer" 
                         class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
@@ -183,6 +194,7 @@
             setup() {
                 const currentIndex = ref(0);
                 const hintsVisible = ref(false);
+                const solutionVisible = ref(false);
                 const answerVisible = ref(false);
 
                 // --- Computed View State ---
@@ -193,15 +205,15 @@
                 const canGoNext = computed(() => currentIndex.value < questionRepository.length - 1);
                 
                 const hintsButtonText = computed(() => hintsVisible.value ? "Hide Hints" : "Hints ▾");
+                const solutionButtonText = computed(() => solutionVisible.value ? "Hide Solution" : "Solution ▾");
                 const answerButtonText = computed(() => answerVisible.value ? "Hide Answer" : "Show Answer");
 
                 // --- Markdown & LaTeX Generators ---
-                // We parse the Markdown into HTML string first, then KaTeX renders the DOM nodes via our v-math directive
                 const topicHtml = computed(() => marked.parse(currentQuestion.value.topic));
                 const descriptionHtml = computed(() => marked.parse(currentQuestion.value.descriptionMarkdown));
                 const hintsHtml = computed(() => marked.parse(currentQuestion.value.hintsMarkdown));
+                const solutionHtml = computed(() => currentQuestion.value.solutionMarkdown ? marked.parse(currentQuestion.value.solutionMarkdown) : '');
                 
-                // Wrap raw LaTeX strings in block math delimiters so KaTeX processes them
                 const mainFormulaHtml = computed(() => `$$ ${currentQuestion.value.mainFormulaLaTeX} $$`);
                 const answerFormulaHtml = computed(() => `$$ ${currentQuestion.value.answerFormulaLaTeX} $$`);
 
@@ -222,17 +234,20 @@
 
                 function resetPanels() {
                     hintsVisible.value = false;
+                    solutionVisible.value = false;
                     answerVisible.value = false;
                 }
 
                 function toggleHints() { hintsVisible.value = !hintsVisible.value; }
+                function toggleSolution() { solutionVisible.value = !solutionVisible.value; }
                 function toggleAnswer() { answerVisible.value = !answerVisible.value; }
 
                 return {
                     currentQuestion, progressText, canGoPrev, canGoNext,
-                    hintsVisible, answerVisible, hintsButtonText, answerButtonText,
-                    topicHtml, descriptionHtml, hintsHtml, mainFormulaHtml, answerFormulaHtml,
-                    prev, next, toggleHints, toggleAnswer
+                    hintsVisible, solutionVisible, answerVisible,
+                    hintsButtonText, solutionButtonText, answerButtonText,
+                    topicHtml, descriptionHtml, hintsHtml, solutionHtml, mainFormulaHtml, answerFormulaHtml,
+                    prev, next, toggleHints, toggleSolution, toggleAnswer
                 };
             }
             });

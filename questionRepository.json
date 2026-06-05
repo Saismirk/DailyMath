@@ -5,7 +5,8 @@
     "title": "The High-Order Limit",
     "descriptionMarkdown": "Evaluate the following limit:",
     "mainFormulaLaTeX": "\\lim_{x \\to 0} \\frac{\\sin x - x + \\frac{x^3}{6}}{x^5}",
-    "hintsMarkdown": "1. Expand $\\sin x$ using the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) up to $x^5$.\n2. Substitute into the numerator — the $x$ and $\\frac{x^3}{6}$ terms cancel exactly, leaving $\\frac{x^5}{120} + O(x^7)$.\n3. Divide by $x^5$ and take $x \\to 0$.",
+    "hintsMarkdown": "1. Consider the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) for $\\sin x$.",
+    "solutionMarkdown": "1. Expand $\\sin x = x - \\frac{x^3}{6} + \\frac{x^5}{120} - \\cdots$ (Maclaurin series up to $x^5$).\n2. Substitute into the numerator — the $x$ and $\\frac{x^3}{6}$ terms cancel exactly, leaving $\\frac{x^5}{120} + O(x^7)$.\n3. Divide by $x^5$ and take $x \\to 0$.",
     "answerFormulaLaTeX": "\\frac{1}{120}",
     "isProof": false
   },
@@ -15,7 +16,8 @@
     "title": "The Exponential Squeeze",
     "descriptionMarkdown": "Evaluate the following limit:",
     "mainFormulaLaTeX": "\\lim_{x \\to 0} \\left(\\frac{\\sin x}{x}\\right)^{1/x^2}",
-    "hintsMarkdown": "1. Take the natural log: let $L = \\lim_{x\\to 0} \\frac{1}{x^2}\\ln\\negthinspace \\left(\\frac{\\sin x}{x}\\right)$.\n2. Near $x=0$, $\\frac{\\sin x}{x} = 1 - \\frac{x^2}{6} + \\cdots$, so $\\ln\\negthinspace \\left(\\frac{\\sin x}{x}\\right) \\approx -\\frac{x^2}{6}$ (see [L'Hôpital's rule](https://en.wikipedia.org/wiki/L%27H%C3%B4pital%27s_rule)).\n3. Therefore $L = -\\frac{1}{6}$, and the original limit is $e^L$.",
+    "hintsMarkdown": "1. Use the identity $a^b = e^{b \\ln a}$.\n2. Find the limit of the exponent using the [Maclaurin series](https://en.wikipedia.org/wiki/Taylor_series#List_of_Maclaurin_series_of_common_functions) of $\\ln(1-u)$.",
+    "solutionMarkdown": "1. Take the natural log: let $L = \\lim_{x\\to 0} \\frac{1}{x^2}\\ln\\negthinspace \\left(\\frac{\\sin x}{x}\\right)$.\n2. Near $x=0$, $\\frac{\\sin x}{x} = 1 - \\frac{x^2}{6} + \\cdots$, so $\\ln\\negthinspace \\left(\\frac{\\sin x}{x}\\right) \\approx -\\frac{x^2}{6}$.\n3. Therefore $L = -\\frac{1}{6}$, and the original limit is $e^L$.",
     "answerFormulaLaTeX": "e^{-1/6}",
     "isProof": false
   },
