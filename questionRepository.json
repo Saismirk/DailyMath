@@ -100,7 +100,73 @@
   },
   {
     "day": 10,
-    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Transpose)",
+    "title": "Prove (AB)ᵀ = BᵀAᵀ",
+    "descriptionMarkdown": "Prove the transpose of a product of matrices is the product of their transposes in reverse order:",
+    "mainFormulaLaTeX": "(AB)^T = B^T A^T",
+    "hintsMarkdown": "1. Use the definition of matrix multiplication and the transpose.",
+    "solutionMarkdown": "1. Let $C = AB$. The element $C_{ij}$ is $\\sum_k A_{ik}B_{kj}$.\n2. The element $(C^T)_{ij}$ is $C_{ji} = \\sum_k A_{jk}B_{ki}$.\n3. Let $D = B^T A^T$. The element $D_{ij}$ is $\\sum_k (B^T)_{ik}(A^T)_{kj} = \\sum_k B_{ki}A_{jk}$.\n4. The expressions are the same, so $(AB)^T = B^T A^T$.",
+    "answerFormulaLaTeX": "(AB)^T_{ij} = (AB)_{ji} = \\sum_k A_{jk}B_{ki} = \\sum_k (A^T)_{kj}(B^T)_{ik} = (B^T A^T)_{ij}",
+    "isProof": true
+  },
+  {
+    "day": 11,
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Determinant)",
+    "title": "Prove det(A) = det(Aᵀ)",
+    "descriptionMarkdown": "Prove that the determinant of a matrix is equal to the determinant of its transpose:",
+    "mainFormulaLaTeX": "\\det(A) = \\det(A^T)",
+    "hintsMarkdown": "1. Use the Leibniz formula for the determinant.",
+    "solutionMarkdown": "1. The determinant is $\\det(A) = \\sum_{\\sigma \\in S_n} (\\text{sgn}(\\sigma) \\prod_{i=1}^n A_{i, \\sigma(i)})$.\n2. The determinant of the transpose is $\\det(A^T) = \\sum_{\\sigma \\in S_n} (\\text{sgn}(\\sigma) \\prod_{i=1}^n A^T_{i, \\sigma(i)}) = \\sum_{\\sigma \\in S_n} (\\text{sgn}(\\sigma) \\prod_{i=1}^n A_{\\sigma(i), i})$.\n3. As $\\sigma$ runs through all permutations, the set of products is the same.",
+    "answerFormulaLaTeX": "\\det(A) = \\det(A^T) \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 12,
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Eigenvalue#Properties)",
+    "title": "Prove Eigenvalues of A and Aᵀ are the same",
+    "descriptionMarkdown": "Prove that a matrix and its transpose have the same eigenvalues:",
+    "mainFormulaLaTeX": "\\lambda(A) = \\lambda(A^T)",
+    "hintsMarkdown": "1. Use the characteristic equation.\n2. Use the property that $\\det(B) = \\det(B^T)$.",
+    "solutionMarkdown": "1. The eigenvalues are the roots of the characteristic equation $\\det(A - \\lambda I) = 0$.\n2. The characteristic equation for $A^T$ is $\\det(A^T - \\lambda I) = 0$.\n3. Since $\\det(B) = \\det(B^T)$, we have $\\det(A - \\lambda I) = \\det((A - \\lambda I)^T) = \\det(A^T - \\lambda I^T) = \\det(A^T - \\lambda I)$.\n4. Both matrices have the same characteristic equation, so they have the same eigenvalues.",
+    "answerFormulaLaTeX": "\\det(A - \\lambda I) = \\det(A^T - \\lambda I) \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 13,
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Cayley-Hamilton_theorem)",
+    "title": "Prove the Cayley-Hamilton Theorem for 2x2 Matrices",
+    "descriptionMarkdown": "For a 2x2 matrix A, prove that it satisfies its own characteristic equation:",
+    "mainFormulaLaTeX": "A^2 - \\text{tr}(A)A + \\det(A)I = 0",
+    "hintsMarkdown": "1. Write out the matrix A explicitly.\n2. Calculate the trace and determinant.\n3. Substitute into the equation and verify.",
+    "solutionMarkdown": "1. Let $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$.\n2. $\\text{tr}(A) = a+d$ and $\\det(A) = ad-bc$.\n3. $A^2 = \\begin{pmatrix} a^2+bc & ab+bd \\\\ ac+cd & bc+d^2 \\end{pmatrix}$.\n4. Substitute into the equation and verify that all elements are zero.",
+    "answerFormulaLaTeX": "A^2 - (a+d)A + (ad-bc)I = 0 \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 14,
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Rank-nullity_theorem)",
+    "title": "Prove the Rank-Nullity Theorem",
+    "descriptionMarkdown": "For a linear map T from a finite-dimensional vector space V to a vector space W, prove:",
+    "mainFormulaLaTeX": "\\text{rank}(T) + \\text{nullity}(T) = \\dim(V)",
+    "hintsMarkdown": "1. Start with a basis for the null space of T.\n2. Extend this to a basis for V.\n3. Show that the image of the basis vectors of V forms a basis for the image of T.",
+    "solutionMarkdown": "1. Let $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_k\\}$ be a basis for $\\ker(T)$.\n2. Extend this to a basis for V: $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_k, \\mathbf{w}_1, \\dots, \\mathbf{w}_r\\}$.\n3. Show that $\\{T(\\mathbf{w}_1), \\dots, T(\\mathbf{w}_r)\\}$ is a basis for $\\text{Im}(T)$.\n4. $\\dim(V) = k+r$, $\\text{nullity}(T) = k$, $\\text{rank}(T) = r$.",
+    "answerFormulaLaTeX": "\\text{rank}(T) + \\text{nullity}(T) = \\dim(V) \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 15,
+    "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Cauchy-Schwarz_inequality)",
+    "title": "Prove the Cauchy-Schwarz Inequality",
+    "descriptionMarkdown": "For all vectors u and v of an inner product space, prove:",
+    "mainFormulaLaTeX": "|\\langle \\mathbf{u}, \\mathbf{v} \\rangle|^2 \\le \\langle \\mathbf{u}, \\mathbf{u} \\rangle \\cdot \\langle \\mathbf{v}, \\mathbf{v} \\rangle",
+    "hintsMarkdown": "1. Consider the vector $\\mathbf{u} - \\frac{\\langle \\mathbf{u}, \\mathbf{v} \\rangle}{\\langle \\mathbf{v}, \\mathbf{v} \\rangle} \\mathbf{v}$.\n2. Use the property that the inner product of a vector with itself is non-negative.",
+    "solutionMarkdown": "1. Let $\\mathbf{w} = \\mathbf{u} - \\text{proj}_{\\mathbf{v}}\\mathbf{u}$.\n2. $\\langle \\mathbf{w}, \\mathbf{w} \\rangle \\ge 0$.\n3. Expand the inner product and simplify.",
+    "answerFormulaLaTeX": "|\\langle \\mathbf{u}, \\mathbf{v} \\rangle|^2 \\le \\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2 \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 16,
+    "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
     "title": "A Simple Integral",
     "descriptionMarkdown": "Evaluate the following integral:",
     "mainFormulaLaTeX": "\\int (x^2 + 2x + 1) dx",
@@ -110,8 +176,8 @@
     "isProof": false
   },
   {
-    "day": 11,
-    "topic": "Topic 2  ·  Advanced Integration",
+    "day": 17,
+    "topic": "Topic 3  ·  Advanced Integration",
     "title": "Integral of sec(x)",
     "descriptionMarkdown": "Evaluate the following integral:",
     "mainFormulaLaTeX": "\\int \\sec x \\, dx",
@@ -121,8 +187,8 @@
     "isProof": false
   },
   {
-    "day": 12,
-    "topic": "Topic 2  ·  Advanced Integration",
+    "day": 18,
+    "topic": "Topic 3  ·  Advanced Integration",
     "title": "Application of Integration by Parts",
     "descriptionMarkdown": "Evaluate the following integral:",
     "mainFormulaLaTeX": "\\int x \\cos x \\, dx",
@@ -132,8 +198,8 @@
     "isProof": false
   },
   {
-    "day": 13,
-    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
+    "day": 19,
+    "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
     "title": "The Gaussian Integral",
     "descriptionMarkdown": "Evaluate the area under the standard bell curve over the entire real line:",
     "mainFormulaLaTeX": "\\int_{-\\infty}^{\\infty} e^{-x^2} \\thinspace  dx",
@@ -143,8 +209,8 @@
     "isProof": false
   },
   {
-    "day": 14,
-    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Dirichlet_integral)",
+    "day": 20,
+    "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Dirichlet_integral)",
     "title": "Feynman's Favourite Trick",
     "descriptionMarkdown": "Evaluate the [Dirichlet integral](https://en.wikipedia.org/wiki/Dirichlet_integral):",
     "mainFormulaLaTeX": "\\int_{0}^{\\infty} \\frac{\\sin x}{x} \\thinspace  dx",
@@ -154,8 +220,8 @@
     "isProof": false
   },
   {
-    "day": 15,
-    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Frullani_integral)",
+    "day": 21,
+    "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Frullani_integral)",
     "title": "The Frullani Integral",
     "descriptionMarkdown": "Evaluate the following integral for constants $a, b > 0$:",
     "mainFormulaLaTeX": "\\int_{0}^{\\infty} \\frac{e^{-ax} - e^{-bx}}{x} \\thinspace  dx",
@@ -165,8 +231,8 @@
     "isProof": false
   },
   {
-    "day": 16,
-    "topic": "Topic 2  ·  Advanced Integration",
+    "day": 22,
+    "topic": "Topic 3  ·  Advanced Integration",
     "title": "Prove Integration by Parts",
     "descriptionMarkdown": "Prove the integration by parts formula:",
     "mainFormulaLaTeX": "\\int u \\, dv = uv - \\int v \\, du",
@@ -176,8 +242,8 @@
     "isProof": true
   },
   {
-    "day": 17,
-    "topic": "Topic 2  ·  Advanced Integration",
+    "day": 23,
+    "topic": "Topic 3  ·  Advanced Integration",
     "title": "Prove Γ(½) = √π",
     "descriptionMarkdown": "The Gamma function is defined as $$\\Gamma(s) = \\int_0^\\infty t^{s-1}e^{-t}\\thinspace dt$$ Prove that:",
     "mainFormulaLaTeX": "\\Gamma\\negthinspace \\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}",
@@ -187,8 +253,8 @@
     "isProof": true
   },
   {
-    "day": 18,
-    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
+    "day": 24,
+    "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "A Separable ODE",
     "descriptionMarkdown": "Solve the following differential equation:",
     "mainFormulaLaTeX": "\\frac{dy}{dx} = \\frac{x}{y}",
@@ -198,8 +264,8 @@
     "isProof": false
   },
   {
-    "day": 19,
-    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
+    "day": 25,
+    "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "The Bernoulli Equation",
     "descriptionMarkdown": "Solve the non-linear [first-order ODE](https://en.wikipedia.org/wiki/Ordinary_differential_equation):",
     "mainFormulaLaTeX": "y' - y = -y^2",
@@ -209,8 +275,8 @@
     "isProof": false
   },
   {
-    "day": 20,
-    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Mechanical_resonance)",
+    "day": 26,
+    "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Mechanical_resonance)",
     "title": "Resonance",
     "descriptionMarkdown": "Solve the driven oscillator with $y(0) = 0$, $y'(0) = 0$:",
     "mainFormulaLaTeX": "y'' + y = \\cos t",
@@ -220,8 +286,8 @@
     "isProof": false
   },
   {
-    "day": 21,
-    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Clairaut%27s_equation)",
+    "day": 27,
+    "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Clairaut%27s_equation)",
     "title": "Clairaut's Equation",
     "descriptionMarkdown": "Find the **general** solution (straight lines) AND the **singular** solution (envelope curve):",
     "mainFormulaLaTeX": "y = x\\thinspace y' + (y')^2",
@@ -231,8 +297,8 @@
     "isProof": false
   },
   {
-    "day": 22,
-    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Abel%27s_identity)",
+    "day": 28,
+    "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Abel%27s_identity)",
     "title": "Prove Abel's Identity",
     "descriptionMarkdown": "Let $y_1, y_2$ be any two solutions of $y'' + p(x)y' + q(x)y = 0$. **Prove** that the Wronskian $W = y_1 y_2' - y_2 y_1'$ satisfies:",
     "mainFormulaLaTeX": "W(x) = W(x_0)\\thinspace \\exp\\negthinspace \\left(-\\int_{x_0}^x p(t)\\thinspace dt\\right)",
@@ -242,8 +308,8 @@
     "isProof": true
   },
   {
-    "day": 23,
-    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
+    "day": 29,
+    "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
     "title": "Complex Arithmetic",
     "descriptionMarkdown": "Compute the following:",
     "mainFormulaLaTeX": "(1 + i)^2",
@@ -253,8 +319,8 @@
     "isProof": false
   },
   {
-    "day": 24,
-    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
+    "day": 30,
+    "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
     "title": "Imaginary Powers",
     "descriptionMarkdown": "Find the **principal value** of $i$ raised to the power of $i$:",
     "mainFormulaLaTeX": "i^{\\thinspace i}",
@@ -264,8 +330,8 @@
     "isProof": false
   },
   {
-    "day": 25,
-    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
+    "day": 31,
+    "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Rational Semicircle Contour",
     "descriptionMarkdown": "Evaluate using the Residue Theorem over a semicircular contour in the upper half-plane:",
     "mainFormulaLaTeX": "\\int_{-\\infty}^{\\infty} \\frac{1}{x^4 + 1} \\thinspace  dx",
@@ -275,8 +341,8 @@
     "isProof": false
   },
   {
-    "day": 26,
-    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
+    "day": 32,
+    "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Unit Circle Contour",
     "descriptionMarkdown": "Evaluate for real constant $a > 1$:",
     "mainFormulaLaTeX": "\\int_{0}^{2\\pi} \\frac{1}{a + \\cos\\theta} \\thinspace  d\\theta",
@@ -286,8 +352,8 @@
     "isProof": false
   },
   {
-    "day": 27,
-    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Basel_problem)",
+    "day": 33,
+    "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Basel_problem)",
     "title": "Prove the Basel Identity",
     "descriptionMarkdown": "Using the partial fraction expansion of $\\pi\\cot(\\pi z)$, **prove:**",
     "mainFormulaLaTeX": "\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}",
@@ -297,8 +363,8 @@
     "isProof": true
   },
   {
-    "day": 28,
-    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
+    "day": 34,
+    "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
     "title": "A Simple PDE",
     "descriptionMarkdown": "Find the general solution to the following partial differential equation:",
     "mainFormulaLaTeX": "\\frac{\\partial u}{\\partial x} = 0",
@@ -308,8 +374,8 @@
     "isProof": false
   },
   {
-    "day": 29,
-    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
+    "day": 35,
+    "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
     "title": "The Plucked String  (Wave Equation)",
     "descriptionMarkdown": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = \\sin x$ and $u_t(x,0) = 0$:",
     "mainFormulaLaTeX": "u_{tt} = c^2\\thinspace u_{xx}",
@@ -319,8 +385,8 @@
     "isProof": false
   },
   {
-    "day": 30,
-    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Heat_equation)",
+    "day": 36,
+    "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Heat_equation)",
     "title": "Cooling on a Rod  (Heat Equation)",
     "descriptionMarkdown": "Solve $u_t = u_{xx}$ on $[0,\\pi]$ with $u(0,t)=u(\\pi,t)=0$ and initial condition:",
     "mainFormulaLaTeX": "u(x,0) = 3\\sin(2x) - 5\\sin(5x)",
@@ -330,8 +396,8 @@
     "isProof": false
   },
   {
-    "day": 31,
-    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Laplace%27s_equation)",
+    "day": 37,
+    "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Laplace%27s_equation)",
     "title": "Steady State on a Disk  (Laplace's Equation)",
     "descriptionMarkdown": "Solve $\\nabla^2 u = 0$ on the unit disk $r \\le 1$ with boundary condition $u(1,\\theta) = \\sin^2\\theta$:",
     "mainFormulaLaTeX": "\\nabla^2 u = 0",
@@ -341,8 +407,8 @@
     "isProof": false
   },
   {
-    "day": 32,
-    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Green%27s_identities)",
+    "day": 38,
+    "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Green%27s_identities)",
     "title": "Prove Green's First Identity",
     "descriptionMarkdown": "For smooth $u$, $v$ on a bounded domain $\\Omega \\subset \\mathbb{R}^3$ with smooth boundary $\\partial\\Omega$, **prove:**",
     "mainFormulaLaTeX": "\\int_\\Omega u\\thinspace \\nabla^2 v\\thinspace dV = \\oint_{\\partial\\Omega} u\\thinspace \\frac{\\partial v}{\\partial n}\\thinspace dS - \\int_\\Omega \\nabla u \\cdot \\nabla v\\thinspace dV",
@@ -352,8 +418,8 @@
     "isProof": true
   },
   {
-    "day": 33,
-    "topic": "[Topic 6  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Integrating_factor)",
+    "day": 39,
+    "topic": "[Topic 7  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Integrating_factor)",
     "title": "Prove the Integrating Factor Identity",
     "descriptionMarkdown": "For $y' + p(x)y = g(x)$, **prove** that multiplying by $\\mu(x) = e^{\\int p\\thinspace dx}$ gives a perfect derivative:",
     "mainFormulaLaTeX": "\\mu\\thinspace y' + \\mu\\thinspace p(x)\\thinspace y = \\frac{d}{dx}\\negthinspace \\left[\\mu\\thinspace y\\right]",
@@ -363,8 +429,8 @@
     "isProof": true
   },
   {
-    "day": 34,
-    "topic": "[Topic 7  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus))",
+    "day": 40,
+    "topic": "[Topic 8  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus))",
     "title": "Prove the Repeated Root Case",
     "descriptionMarkdown": "For $ay''+by'+cy=0$ with a **repeated** characteristic root $r_0$, **prove** that $y_2 = xe^{r_0 x}$ is a solution:",
     "mainFormulaLaTeX": "y_2(x) = x\\thinspace e^{r_0 x}",
