@@ -1,6 +1,28 @@
 [
   {
     "day": 1,
+    "topic": "Warm-up",
+    "title": "The Polynomial Derivative",
+    "descriptionMarkdown": "Find the derivative of:",
+    "mainFormulaLaTeX": "f(x) = x^3 - 6x^2 + 11x - 6",
+    "hintsMarkdown": "1. Use the [power rule](https://en.wikipedia.org/wiki/Power_rule) for differentiation.",
+    "solutionMarkdown": "1. Apply the power rule to each term: $f'(x) = 3x^2 - 12x + 11$.",
+    "answerFormulaLaTeX": "f'(x) = 3x^2 - 12x + 11",
+    "isProof": false
+  },
+  {
+    "day": 2,
+    "topic": "Warm-up",
+    "title": "The Product Rule",
+    "descriptionMarkdown": "Find the derivative of:",
+    "mainFormulaLaTeX": "f(x) = x^2 \\sin x",
+    "hintsMarkdown": "1. Use the [product rule](https://en.wikipedia.org/wiki/Product_rule).",
+    "solutionMarkdown": "1. Apply the product rule: $f'(x) = (x^2)' \\sin x + x^2 (\\sin x)' = 2x \\sin x + x^2 \\cos x$.",
+    "answerFormulaLaTeX": "f'(x) = 2x\\sin x + x^2\\cos x",
+    "isProof": false
+  },
+  {
+    "day": 3,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The High-Order Limit",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -11,7 +33,7 @@
     "isProof": false
   },
   {
-    "day": 2,
+    "day": 4,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The Exponential Squeeze",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -22,7 +44,40 @@
     "isProof": false
   },
   {
-    "day": 3,
+    "day": 5,
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
+    "title": "L'Hopital's Rule (0/0)",
+    "descriptionMarkdown": "Evaluate the following limit:",
+    "mainFormulaLaTeX": "\\lim_{x \\to 0} \\frac{e^x - 1}{\\sin x}",
+    "hintsMarkdown": "1. This is an indeterminate form of type 0/0.\n2. Apply [L'Hopital's Rule](https://en.wikipedia.org/wiki/L%27H%C3%B4pital%27s_rule).",
+    "solutionMarkdown": "1. Differentiate the numerator and the denominator: $\\lim_{x \\to 0} \\frac{e^x}{\\cos x}$.\n2. Substitute $x=0$: $\\frac{e^0}{\\cos 0} = 1$.",
+    "answerFormulaLaTeX": "1",
+    "isProof": false
+  },
+  {
+    "day": 6,
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
+    "title": "L'Hopital's Rule (∞/∞)",
+    "descriptionMarkdown": "Evaluate the following limit:",
+    "mainFormulaLaTeX": "\\lim_{x \\to \\infty} \\frac{\\ln x}{x}",
+    "hintsMarkdown": "1. This is an indeterminate form of type ∞/∞.\n2. Apply [L'Hopital's Rule](https://en.wikipedia.org/wiki/L%27H%C3%B4pital%27s_rule).",
+    "solutionMarkdown": "1. Differentiate the numerator and the denominator: $\\lim_{x \\to \\infty} \\frac{1/x}{1}$.\n2. As $x \\to \\infty$, the limit approaches 0.",
+    "answerFormulaLaTeX": "0",
+    "isProof": false
+  },
+  {
+    "day": 7,
+    "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
+    "title": "L'Hopital's Rule (Multiple Applications)",
+    "descriptionMarkdown": "Evaluate the following limit:",
+    "mainFormulaLaTeX": "\\lim_{x \\to 0} \\frac{x - \\sin x}{x^3}",
+    "hintsMarkdown": "1. This is an indeterminate form of type 0/0.\n2. You will need to apply [L'Hopital's Rule](https://en.wikipedia.org/wiki/L%27H%C3%B4pital%27s_rule) multiple times.",
+    "solutionMarkdown": "1. First application: $\\lim_{x \\to 0} \\frac{1 - \\cos x}{3x^2}$.\n2. Second application: $\\lim_{x \\to 0} \\frac{\\sin x}{6x}$.\n3. Third application: $\\lim_{x \\to 0} \\frac{\\cos x}{6} = \\frac{1}{6}$.",
+    "answerFormulaLaTeX": "\\frac{1}{6}",
+    "isProof": false
+  },
+  {
+    "day": 8,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The 100th Derivative",
     "descriptionMarkdown": "Find $f^{(100)}(0)$ for:",
@@ -33,7 +88,7 @@
     "isProof": false
   },
   {
-    "day": 22,
+    "day": 9,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "Prove Euler's Formula",
     "descriptionMarkdown": "Using only power series, **prove** Euler's formula:",
@@ -44,7 +99,40 @@
     "isProof": true
   },
   {
-    "day": 4,
+    "day": 10,
+    "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
+    "title": "A Simple Integral",
+    "descriptionMarkdown": "Evaluate the following integral:",
+    "mainFormulaLaTeX": "\\int (x^2 + 2x + 1) dx",
+    "hintsMarkdown": "1. Use the [power rule](https://en.wikipedia.org/wiki/Power_rule) for integration.",
+    "solutionMarkdown": "1. Integrate term by term: $\\frac{x^3}{3} + x^2 + x + C$.",
+    "answerFormulaLaTeX": "\\frac{x^3}{3} + x^2 + x + C",
+    "isProof": false
+  },
+  {
+    "day": 11,
+    "topic": "Topic 2  ·  Advanced Integration",
+    "title": "Integral of sec(x)",
+    "descriptionMarkdown": "Evaluate the following integral:",
+    "mainFormulaLaTeX": "\\int \\sec x \\, dx",
+    "hintsMarkdown": "1. Multiply the integrand by $\\frac{\\sec x + \\tan x}{\\sec x + \\tan x}$.\n2. Use a u-substitution.",
+    "solutionMarkdown": "1. Let $u = \\sec x + \\tan x$, so $du = (\\sec x \\tan x + \\sec^2 x) \\, dx$.\n2. The integral becomes $\\int \\frac{1}{u} \\, du = \\ln|u| + C$.",
+    "answerFormulaLaTeX": "\\ln|\\sec x + \\tan x| + C",
+    "isProof": false
+  },
+  {
+    "day": 12,
+    "topic": "Topic 2  ·  Advanced Integration",
+    "title": "Application of Integration by Parts",
+    "descriptionMarkdown": "Evaluate the following integral:",
+    "mainFormulaLaTeX": "\\int x \\cos x \\, dx",
+    "hintsMarkdown": "1. Use integration by parts.\n2. Let $u = x$ and $dv = \\cos x \\, dx$.",
+    "solutionMarkdown": "1. Let $u = x$ and $dv = \\cos x \\, dx$. Then $du = dx$ and $v = \\sin x$.\n2. Apply the formula: $\\int x \\cos x \\, dx = x \\sin x - \\int \\sin x \\, dx$.\n3. The remaining integral is straightforward.",
+    "answerFormulaLaTeX": "x \\sin x + \\cos x + C",
+    "isProof": false
+  },
+  {
+    "day": 13,
     "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
     "title": "The Gaussian Integral",
     "descriptionMarkdown": "Evaluate the area under the standard bell curve over the entire real line:",
@@ -55,7 +143,7 @@
     "isProof": false
   },
   {
-    "day": 5,
+    "day": 14,
     "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Dirichlet_integral)",
     "title": "Feynman's Favourite Trick",
     "descriptionMarkdown": "Evaluate the [Dirichlet integral](https://en.wikipedia.org/wiki/Dirichlet_integral):",
@@ -66,7 +154,7 @@
     "isProof": false
   },
   {
-    "day": 6,
+    "day": 15,
     "topic": "[Topic 2  ·  Advanced Integration](https://en.wikipedia.org/wiki/Frullani_integral)",
     "title": "The Frullani Integral",
     "descriptionMarkdown": "Evaluate the following integral for constants $a, b > 0$:",
@@ -77,7 +165,18 @@
     "isProof": false
   },
   {
-    "day": 23,
+    "day": 16,
+    "topic": "Topic 2  ·  Advanced Integration",
+    "title": "Prove Integration by Parts",
+    "descriptionMarkdown": "Prove the integration by parts formula:",
+    "mainFormulaLaTeX": "\\int u \\, dv = uv - \\int v \\, du",
+    "hintsMarkdown": "1. Start with the product rule for differentiation.",
+    "solutionMarkdown": "1. The product rule states $\\frac{d}{dx}(uv) = u \\frac{dv}{dx} + v \\frac{du}{dx}$.\n2. Integrate both sides with respect to $x$: $uv = \\int u \\, dv + \\int v \\, du$.\n3. Rearrange the terms to get the desired formula.",
+    "answerFormulaLaTeX": "\\int u \\, dv = uv - \\int v \\, du \\quad \\mathrm{(QED)}",
+    "isProof": true
+  },
+  {
+    "day": 17,
     "topic": "Topic 2  ·  Advanced Integration",
     "title": "Prove Γ(½) = √π",
     "descriptionMarkdown": "The Gamma function is defined as $$\\Gamma(s) = \\int_0^\\infty t^{s-1}e^{-t}\\thinspace dt$$ Prove that:",
@@ -88,7 +187,18 @@
     "isProof": true
   },
   {
-    "day": 7,
+    "day": 18,
+    "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
+    "title": "A Separable ODE",
+    "descriptionMarkdown": "Solve the following differential equation:",
+    "mainFormulaLaTeX": "\\frac{dy}{dx} = \\frac{x}{y}",
+    "hintsMarkdown": "1. This is a [separable differential equation](https://en.wikipedia.org/wiki/Separation_of_variables).",
+    "solutionMarkdown": "1. Separate variables: $y dy = x dx$.\n2. Integrate both sides: $\\frac{y^2}{2} = \\frac{x^2}{2} + C$.\n3. The solution is $y^2 - x^2 = C$.",
+    "answerFormulaLaTeX": "y^2 - x^2 = C",
+    "isProof": false
+  },
+  {
+    "day": 19,
     "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "The Bernoulli Equation",
     "descriptionMarkdown": "Solve the non-linear [first-order ODE](https://en.wikipedia.org/wiki/Ordinary_differential_equation):",
@@ -99,7 +209,7 @@
     "isProof": false
   },
   {
-    "day": 8,
+    "day": 20,
     "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Mechanical_resonance)",
     "title": "Resonance",
     "descriptionMarkdown": "Solve the driven oscillator with $y(0) = 0$, $y'(0) = 0$:",
@@ -110,7 +220,7 @@
     "isProof": false
   },
   {
-    "day": 9,
+    "day": 21,
     "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Clairaut%27s_equation)",
     "title": "Clairaut's Equation",
     "descriptionMarkdown": "Find the **general** solution (straight lines) AND the **singular** solution (envelope curve):",
@@ -121,7 +231,7 @@
     "isProof": false
   },
   {
-    "day": 24,
+    "day": 22,
     "topic": "[Topic 3  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Abel%27s_identity)",
     "title": "Prove Abel's Identity",
     "descriptionMarkdown": "Let $y_1, y_2$ be any two solutions of $y'' + p(x)y' + q(x)y = 0$. **Prove** that the Wronskian $W = y_1 y_2' - y_2 y_1'$ satisfies:",
@@ -132,7 +242,18 @@
     "isProof": true
   },
   {
-    "day": 10,
+    "day": 23,
+    "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
+    "title": "Complex Arithmetic",
+    "descriptionMarkdown": "Compute the following:",
+    "mainFormulaLaTeX": "(1 + i)^2",
+    "hintsMarkdown": "1. Expand the expression.",
+    "solutionMarkdown": "1. $(1 + i)^2 = 1^2 + 2i + i^2 = 1 + 2i - 1 = 2i$.",
+    "answerFormulaLaTeX": "2i",
+    "isProof": false
+  },
+  {
+    "day": 24,
     "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
     "title": "Imaginary Powers",
     "descriptionMarkdown": "Find the **principal value** of $i$ raised to the power of $i$:",
@@ -143,7 +264,7 @@
     "isProof": false
   },
   {
-    "day": 11,
+    "day": 25,
     "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Rational Semicircle Contour",
     "descriptionMarkdown": "Evaluate using the Residue Theorem over a semicircular contour in the upper half-plane:",
@@ -154,7 +275,7 @@
     "isProof": false
   },
   {
-    "day": 12,
+    "day": 26,
     "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Unit Circle Contour",
     "descriptionMarkdown": "Evaluate for real constant $a > 1$:",
@@ -165,7 +286,7 @@
     "isProof": false
   },
   {
-    "day": 25,
+    "day": 27,
     "topic": "[Topic 4  ·  Complex Analysis](https://en.wikipedia.org/wiki/Basel_problem)",
     "title": "Prove the Basel Identity",
     "descriptionMarkdown": "Using the partial fraction expansion of $\\pi\\cot(\\pi z)$, **prove:**",
@@ -176,7 +297,18 @@
     "isProof": true
   },
   {
-    "day": 13,
+    "day": 28,
+    "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
+    "title": "A Simple PDE",
+    "descriptionMarkdown": "Find the general solution to the following partial differential equation:",
+    "mainFormulaLaTeX": "\\frac{\\partial u}{\\partial x} = 0",
+    "hintsMarkdown": "1. If the partial derivative with respect to $x$ is zero, what does that imply about the function's dependence on $x$?",
+    "solutionMarkdown": "1. The equation $\\frac{\\partial u}{\\partial x} = 0$ implies that $u$ does not depend on $x$. Therefore, the solution is any function of $y$, i.e., $u(x,y) = f(y)$.",
+    "answerFormulaLaTeX": "u(x,y) = f(y)",
+    "isProof": false
+  },
+  {
+    "day": 29,
     "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
     "title": "The Plucked String  (Wave Equation)",
     "descriptionMarkdown": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = \\sin x$ and $u_t(x,0) = 0$:",
@@ -187,7 +319,7 @@
     "isProof": false
   },
   {
-    "day": 14,
+    "day": 30,
     "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Heat_equation)",
     "title": "Cooling on a Rod  (Heat Equation)",
     "descriptionMarkdown": "Solve $u_t = u_{xx}$ on $[0,\\pi]$ with $u(0,t)=u(\\pi,t)=0$ and initial condition:",
@@ -198,7 +330,7 @@
     "isProof": false
   },
   {
-    "day": 15,
+    "day": 31,
     "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Laplace%27s_equation)",
     "title": "Steady State on a Disk  (Laplace's Equation)",
     "descriptionMarkdown": "Solve $\\nabla^2 u = 0$ on the unit disk $r \\le 1$ with boundary condition $u(1,\\theta) = \\sin^2\\theta$:",
@@ -209,7 +341,7 @@
     "isProof": false
   },
   {
-    "day": 26,
+    "day": 32,
     "topic": "[Topic 5  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Green%27s_identities)",
     "title": "Prove Green's First Identity",
     "descriptionMarkdown": "For smooth $u$, $v$ on a bounded domain $\\Omega \\subset \\mathbb{R}^3$ with smooth boundary $\\partial\\Omega$, **prove:**",
@@ -220,40 +352,7 @@
     "isProof": true
   },
   {
-    "day": 16,
-    "topic": "[Topic 6  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Logistic_function)",
-    "title": "The Separable Logistic Equation",
-    "descriptionMarkdown": "Solve the logistic ODE with $y(0) = 2$:",
-    "mainFormulaLaTeX": "\\frac{dy}{dx} = y(1 - y)",
-    "hintsMarkdown": "1. This is a [separable differential equation](https://en.wikipedia.org/wiki/Separation_of_variables).\n2. Use [partial fraction decomposition](https://en.wikipedia.org/wiki/Partial_fraction_decomposition).",
-    "solutionMarkdown": "1. Separate variables: $\\frac{dy}{y(1-y)} = dx$.\n2. Apply [partial fractions](https://en.wikipedia.org/wiki/Partial_fraction_decomposition): $\\frac{1}{y(1-y)} = \\frac{1}{y} + \\frac{1}{1-y}$.\n3. Integrate both sides, exponentiate to solve for $y$ explicitly, then use $y(0) = 2$.",
-    "answerFormulaLaTeX": "y(x) = \\frac{2e^x}{2e^x - 1}",
-    "isProof": false
-  },
-  {
-    "day": 17,
-    "topic": "[Topic 6  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Integrating_factor)",
-    "title": "The Integrating Factor",
-    "descriptionMarkdown": "Solve with $y(0) = 1$:",
-    "mainFormulaLaTeX": "y' - 2xy = e^{x^2}",
-    "hintsMarkdown": "1. This is a linear first-order ODE.\n2. Use an [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor).",
-    "solutionMarkdown": "1. Compute the [integrating factor](https://en.wikipedia.org/wiki/Integrating_factor): $\\mu(x) = e^{\\int{-2x}\\thinspace dx} = e^{-x^2}$.\n2. Multiply both sides by $\\mu$; the LHS becomes $\\frac{d}{dx}\\negthinspace \\left[y\\thinspace e^{-x^2}\\right]$.\n3. Integrate the RHS (which becomes $1$), yielding $y\\thinspace e^{-x^2} = x + C$; apply $y(0) = 1$.",
-    "answerFormulaLaTeX": "y(x) = (x+1)\\thinspace e^{x^2}",
-    "isProof": false
-  },
-  {
-    "day": 18,
-    "topic": "[Topic 6  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Exact_differential_equation)",
-    "title": "The Exact Equation",
-    "descriptionMarkdown": "Show this equation is exact and find the general solution $F(x,y) = C$:",
-    "mainFormulaLaTeX": "(3x^2y + y^3)\\thinspace dx + (x^3 + 3xy^2)\\thinspace dy = 0",
-    "hintsMarkdown": "1. Check if the equation is an [exact differential equation](https://en.wikipedia.org/wiki/Exact_differential_equation).\n2. If it is, find the potential function $F(x,y)$.",
-    "solutionMarkdown": "1. Let $M = 3x^2y+y^3$, $N = x^3+3xy^2$; check $\\frac{\\partial M}{\\partial y} = 3x^2+3y^2 = \\frac{\\partial N}{\\partial x}$ ✓ ([Clairaut's theorem](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives)).\n2. Integrate $M$ w.r.t. $x$: $F = x^3y + xy^3 + h(y)$.\n3. Differentiate $F$ w.r.t. $y$ and set equal to $N$: $x^3 + 3xy^2 + h'(y) = x^3 + 3xy^2$, so $h'(y) = 0$.",
-    "answerFormulaLaTeX": "x^3 y + x y^3 = C",
-    "isProof": false
-  },
-  {
-    "day": 27,
+    "day": 33,
     "topic": "[Topic 6  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Integrating_factor)",
     "title": "Prove the Integrating Factor Identity",
     "descriptionMarkdown": "For $y' + p(x)y = g(x)$, **prove** that multiplying by $\\mu(x) = e^{\\int p\\thinspace dx}$ gives a perfect derivative:",
@@ -264,40 +363,7 @@
     "isProof": true
   },
   {
-    "day": 19,
-    "topic": "[Topic 7  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus))",
-    "title": "The Characteristic Equation",
-    "descriptionMarkdown": "Solve with $y(0) = 1$ and $y'(0) = 2$:",
-    "mainFormulaLaTeX": "y'' - 5y' + 6y = 0",
-    "hintsMarkdown": "1. This is a homogeneous linear second-order ODE with constant coefficients.\n2. Find the roots of the [characteristic equation](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)).",
-    "solutionMarkdown": "1. Assume $y = e^{rx}$ to obtain the [characteristic polynomial](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)) $r^2 - 5r + 6 = 0$.\n2. Factor: $(r-2)(r-3) = 0$, giving $r_1 = 2$, $r_2 = 3$; general solution $y = C_1 e^{2x} + C_2 e^{3x}$.\n3. Differentiate, apply both initial conditions as a $2\\times 2$ system, and solve for $C_1$, $C_2$.",
-    "answerFormulaLaTeX": "y(x) = 4e^{3x} - 3e^{2x}",
-    "isProof": false
-  },
-  {
-    "day": 20,
-    "topic": "[Topic 7  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Method_of_undetermined_coefficients)",
-    "title": "Resonance and Undetermined Coefficients",
-    "descriptionMarkdown": "Find the general solution (watch for resonance!):",
-    "mainFormulaLaTeX": "y'' + 4y = \\sin(2x)",
-    "hintsMarkdown": "1. Find the homogeneous solution.\n2. The driving frequency is equal to the natural frequency, so this is a case of [resonance](https://en.wikipedia.org/wiki/Mechanical_resonance).\n3. Use the method of [undetermined coefficients](https://en.wikipedia.org/wiki/Method_of_undetermined_coefficients) with a modified trial solution.",
-    "solutionMarkdown": "1. Homogeneous solution: $y_h = C_1\\cos(2x) + C_2\\sin(2x)$.\n2. Since $\\sin(2x) \\in y_h$ ([resonance](https://en.wikipedia.org/wiki/Mechanical_resonance)!), multiply the trial by $x$: use $y_p = x(A\\cos 2x + B\\sin 2x)$.\n3. Substitute $y_p$ into the ODE, expand, collect $\\cos(2x)$ and $\\sin(2x)$ terms, and match coefficients.",
-    "answerFormulaLaTeX": "y(x) = C_1\\cos(2x) + C_2\\sin(2x) - \\tfrac{x}{4}\\cos(2x)",
-    "isProof": false
-  },
-  {
-    "day": 21,
-    "topic": "[Topic 7  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Variation_of_parameters)",
-    "title": "Variation of Parameters",
-    "descriptionMarkdown": "Find a particular solution via variation of parameters (given $y_h = C_1\\cos x + C_2\\sin x$):",
-    "mainFormulaLaTeX": "y'' + y = \\sec x",
-    "hintsMarkdown": "1. Use the method of [variation of parameters](https://en.wikipedia.org/wiki/Variation_of_parameters).\n2. The Wronskian will be useful.",
-    "solutionMarkdown": "1. With $y_1 = \\cos x$, $y_2 = \\sin x$, compute the Wronskian $W = y_1 y_2' - y_2 y_1' = 1$.\n2. [Variation-of-parameters](https://en.wikipedia.org/wiki/Variation_of_parameters) formulas: $u_1' = -\\frac{y_2\\sec x}{W} = -\\tan x$ and $u_2' = \\frac{y_1\\sec x}{W} = 1$.\n3. Integrate: $u_1 = \\ln|\\cos x|$, $u_2 = x$; then $y_p = u_1 y_1 + u_2 y_2$.",
-    "answerFormulaLaTeX": "y_p(x) = x\\sin x + \\cos x\\thinspace \\ln|\\cos x|",
-    "isProof": false
-  },
-  {
-    "day": 28,
+    "day": 34,
     "topic": "[Topic 7  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus))",
     "title": "Prove the Repeated Root Case",
     "descriptionMarkdown": "For $ay''+by'+cy=0$ with a **repeated** characteristic root $r_0$, **prove** that $y_2 = xe^{r_0 x}$ is a solution:",
