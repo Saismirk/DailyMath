@@ -367,7 +367,7 @@
     "descriptionMarkdown": "Evaluate using the Residue Theorem over a semicircular contour in the upper half-plane:",
     "mainFormulaLaTeX": "\\int_{-\\infty}^{\\infty} \\frac{1}{x^4 + 1} \\thinspace  dx",
     "hintsMarkdown": "1. Use the [Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem).\n2. Find the poles of the integrand in the upper half-plane.",
-    "solutionMarkdown": "1. Find poles of $\\frac{1}{z^4+1}$ by solving $z^4 = e^{i\\pi}$; the four roots are $e^{i\\pi(2k+1)/4}$ for $k = 0,1,2,3$.\n2. Only $z_1 = e^{i\\pi/4}$ and $z_2 = e^{3i\\pi/4}$ lie in the upper half-plane ($\\mathrm{Im}(z) > 0$).\n3. Compute residues via $\\mathrm{Res}_{z=z_k} = \\frac{1}{4z_k^3}$, sum, and apply $\\int_{-\\infty}^\\infty = 2\\pi i \\sum\\mathrm{Res}$ ([Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem)).",
+    "solutionMarkdown": "1. Find poles of $\\frac{1}{z^4+1}$ by solving $z^4 = e^{i\\pi}$; the four roots are $e^{i\\pi(2k+1)/4}$ for $k = 0,1,2,3$.\n2. Only $z_1 = e^{i\\pi/4}$ and $z_2 = e^{3i\\pi/4}$ lie in the upper half-plane ($\\mathrm{Im}(z) > 0$).\n3. Compute residues via $\\mathrm{Res}_{z=z_k} = \\frac{1}{4z_k^3}$.\n4. Sum, and apply $\\int_{-\\infty}^\\infty = 2\\pi i \\sum\\mathrm{Res}$ ([Residue theorem](https://en.wikipedia.org/wiki/Residue_theorem)).",
     "answerFormulaLaTeX": "\\frac{\\pi}{\\sqrt{2}}",
     "isProof": false
   },
