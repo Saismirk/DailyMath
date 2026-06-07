@@ -51,14 +51,14 @@
 </head>
 <body>
 
-    <div id="app" class="flex flex-col h-screen w-full min-w-[640px] min-h-[520px]">
+    <div id="app" class="flex flex-col h-screen w-full">
         
         <!-- Home Screen -->
-        <div v-if="!appStarted" class="flex flex-col items-center justify-center h-full bg-[#171717] text-center">
-            <h1 class="text-4xl font-bold text-white mb-4">Welcome to Daily Math</h1>
+        <div v-if="!appStarted" class="flex flex-col items-center justify-center h-full bg-[#171717] text-center p-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Welcome to Daily Math</h1>
             <div class="text-left max-w-md mx-auto bg-[#242424] p-6 rounded-lg">
-                <h2 class="text-2xl font-semibold text-white mb-4">How to Use:</h2>
-                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <h2 class="text-xl md:text-2xl font-semibold text-white mb-4">How to Use:</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 text-sm md:text-base">
                     <li>Use the <b><i>Next</i></b> and <b><i>Previous</i></b> buttons to navigate through questions.</li>
                     <li>Toggle <b><i>Hints</i></b> for additional help.</li>
                     <li>Toggle <b><i>Solution</i></b> to show solution steps.</li>
@@ -72,29 +72,29 @@
         <!-- Question View -->
         <template v-if="appStarted">
             <!-- ── Header ────────────────────────────────────────────────── -->
-            <div class="bg-[#242424] px-[28px] py-[14px] flex justify-between items-center shrink-0">
-                <div class="flex flex-col gap-[3px]">
-                    <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px] md-content" v-html="topicHtml">
+            <div class="bg-[#242424] px-4 md:px-[28px] py-3 md:py-[14px] flex justify-between items-center shrink-0">
+                <div class="flex flex-col gap-1 md:gap-[3px]">
+                    <div class="text-[#7fb8e8] text-[10px] md:text-[11px] font-medium tracking-[0.8px] md-content" v-html="topicHtml">
                     </div>
-                    <div class="text-white text-[21px] font-semibold">
+                    <div class="text-white text-lg md:text-[21px] font-semibold">
                         {{ currentQuestion.title }}
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-4">
-                    <div class="flex flex-col items-end gap-[2px]">
-                        <div class="text-[#7fb8e8] text-[18px] font-semibold">
+                <div class="flex items-center gap-2 md:gap-4">
+                    <div class="flex flex-col items-end gap-0.5 md:gap-[2px]">
+                        <div class="text-[#7fb8e8] text-base md:text-[18px] font-semibold">
                             {{ progressText }}
                         </div>
-                        <div class="text-[#4a7aaa] text-[10px]">
+                        <div class="text-[#4a7aaa] text-[9px] md:text-[10px]">
                             questions
                         </div>
                     </div>
-                    <div class="flex flex-col items-end gap-[2px]">
-                        <div class="text-[#7fb8e8] text-[18px] font-semibold">
+                    <div class="flex flex-col items-end gap-0.5 md:gap-[2px]">
+                        <div class="text-[#7fb8e8] text-base md:text-[18px] font-semibold">
                             {{ Math.round(progressPercentage) }}%
                         </div>
-                        <div class="text-[#4a7aaa] text-[10px]">
+                        <div class="text-[#4a7aaa] text-[9px] md:text-[10px]">
                             complete
                         </div>
                     </div>
@@ -108,38 +108,38 @@
 
             <!-- ── Scrollable content ────────────────────────────────────── -->
             <div class="flex-1 overflow-y-auto">
-                <div class="mx-[36px] mt-[20px] mb-[24px] flex flex-col gap-[32px]">
+                <div class="mx-4 md:mx-[36px] mt-5 md:mt-[20px] mb-6 md:mb-[24px] flex flex-col gap-6 md:gap-[32px]">
                     
                     <!-- Question description (markdown with inline math) -->
-                    <div class="md-content px-[20px] text-[15px]" v-math="descriptionHtml"></div>
+                    <div class="md-content px-2 md:px-[20px] text-sm md:text-[15px]" v-math="descriptionHtml"></div>
 
                     <!-- Main formula (LaTeX) -->
                     <div class="main-formula flex justify-center w-full" v-math="mainFormulaHtml"></div>
 
                     <!-- Proof badge -->
                     <div v-if="currentQuestion.isProof" 
-                         class="self-start bg-[#2B2B2B] border border-[#aac4e8] rounded-[4px] px-[10px] py-[4px]">
-                        <span class="text-[#2a5599] text-[12px] font-medium">✎  Proof / Identity</span>
+                         class="self-start bg-[#2B2B2B] border border-[#aac4e8] rounded-[4px] px-2.5 py-1">
+                        <span class="text-[#2a5599] text-[11px] md:text-[12px] font-medium">✎  Proof / Identity</span>
                     </div>
 
                     <!-- Hints panel -->
                     <div v-show="hintsVisible" 
-                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
-                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">HINTS</div>
-                        <div class="md-content text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-lg px-4 py-3 md:px-[20px] md:py-[14px] flex flex-col gap-1.5 md:gap-[6px]">
+                        <div class="font-semibold text-[10px] md:text-[11px] tracking-[1.2px] text-gray-400">HINTS</div>
+                        <div class="md-content text-sm md:text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
                     </div>
 
                     <!-- Solution panel -->
                     <div v-show="solutionVisible" 
-                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
-                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">SOLUTION</div>
-                        <div class="md-content text-[14.5px] text-gray-300" v-math="solutionHtml"></div>
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-lg px-4 py-3 md:px-[20px] md:py-[14px] flex flex-col gap-1.5 md:gap-[6px]">
+                        <div class="font-semibold text-[10px] md:text-[11px] tracking-[1.2px] text-gray-400">SOLUTION</div>
+                        <div class="md-content text-sm md:text-[14.5px] text-gray-300" v-math="solutionHtml"></div>
                     </div>
 
                     <!-- Answer panel -->
                     <div v-show="answerVisible" 
-                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[8px]">
-                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">ANSWER</div>
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-lg px-4 py-3 md:px-[20px] md:py-[14px] flex flex-col gap-2 md:gap-[8px]">
+                        <div class="font-semibold text-[10px] md:text-[11px] tracking-[1.2px] text-gray-400">ANSWER</div>
                         <div class="flex justify-center text-white" v-math="answerFormulaHtml"></div>
                     </div>
 
@@ -147,39 +147,45 @@
             </div>
 
             <!-- ── Navigation bar ────────────────────────────────────────── -->
-            <div class="bg-[#2B2B2B] border-t border-[#050505] px-[24px] py-[10px] flex justify-between items-center shrink-0">
+            <div class="bg-[#2B2B2B] border-t border-[#050505] px-4 py-2 md:px-[24px] md:py-[10px] flex flex-col md:flex-row justify-between items-center shrink-0 gap-4">
                 
-                <button @click="prev" :disabled="!canGoPrev" 
-                        class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
-                        :class="canGoPrev ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
-                    ← Previous
-                </button>
+                <div class="flex w-full md:w-auto justify-between">
+                    <button @click="prev" :disabled="!canGoPrev" 
+                            class="px-4 py-2 md:px-[18px] md:py-[8px] text-xs md:text-[13px] rounded transition-colors duration-200"
+                            :class="canGoPrev ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                        ← Previous
+                    </button>
+                    <div class="flex items-center md:hidden">
+                        <input type="checkbox" :id="'solved-sm-' + currentQuestion.id" :checked="isSolved(currentQuestion.id)" @change="toggleSolved(currentQuestion.id)" class="form-checkbox h-4 w-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500">
+                        <label :for="'solved-sm-' + currentQuestion.id" class="ml-2 text-xs text-gray-300">Solved</label>
+                    </div>
+                    <button @click="next" :disabled="!canGoNext" 
+                            class="px-4 py-2 md:px-[18px] md:py-[8px] text-xs md:text-[13px] rounded transition-colors duration-200"
+                            :class="canGoNext ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                        Next →
+                    </button>
+                </div>
 
-                <div class="flex gap-[10px] absolute left-1/2 -translate-x-1/2">
+                <div class="flex gap-2 md:gap-[10px] md:absolute md:left-1/2 md:-translate-x-1/2">
                     <button @click="toggleHints" 
-                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                            class="px-3 py-2 md:px-[16px] md:py-[8px] text-xs md:text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
                         {{ hintsButtonText }}
                     </button>
                     <button @click="toggleSolution" v-if="currentQuestion.solutionMarkdown"
-                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                            class="px-3 py-2 md:px-[16px] md:py-[8px] text-xs md:text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
                         {{ solutionButtonText }}
                     </button>
                     <button @click="toggleAnswer" 
-                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                            class="px-3 py-2 md:px-[16px] md:py-[8px] text-xs md:text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
                         {{ answerButtonText }}
                     </button>
                 </div>
 
-                <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-4">
                     <div class="flex items-center">
-                        <input type="checkbox" :id="'solved-' + currentQuestion.id" :checked="isSolved(currentQuestion.id)" @change="toggleSolved(currentQuestion.id)" class="form-checkbox h-4 w-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500">
-                        <label :for="'solved-' + currentQuestion.id" class="ml-2 text-sm text-gray-300">Mark as Solved</label>
+                        <input type="checkbox" :id="'solved-lg-' + currentQuestion.id" :checked="isSolved(currentQuestion.id)" @change="toggleSolved(currentQuestion.id)" class="form-checkbox h-4 w-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500">
+                        <label :for="'solved-lg-' + currentQuestion.id" class="ml-2 text-sm text-gray-300">Mark as Solved</label>
                     </div>
-                    <button @click="next" :disabled="!canGoNext" 
-                            class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
-                            :class="canGoNext ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
-                        Next →
-                    </button>
                 </div>
 
             </div>
