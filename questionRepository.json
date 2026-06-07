@@ -1,6 +1,7 @@
 [
   {
     "day": 1,
+    "id": 1,
     "topic": "Warm-up",
     "title": "The Polynomial Derivative",
     "descriptionMarkdown": "Find the derivative of:",
@@ -12,6 +13,7 @@
   },
   {
     "day": 2,
+    "id": 2,
     "topic": "Warm-up",
     "title": "The Product Rule",
     "descriptionMarkdown": "Find the derivative of:",
@@ -23,6 +25,7 @@
   },
   {
     "day": 3,
+    "id": 3,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The High-Order Limit",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -34,6 +37,7 @@
   },
   {
     "day": 4,
+    "id": 4,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The Exponential Squeeze",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -45,6 +49,7 @@
   },
   {
     "day": 5,
+    "id": 5,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "L'Hopital's Rule (0/0)",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -56,6 +61,7 @@
   },
   {
     "day": 6,
+    "id": 6,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "L'Hopital's Rule (∞/∞)",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -67,6 +73,7 @@
   },
   {
     "day": 7,
+    "id": 7,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "L'Hopital's Rule (Multiple Applications)",
     "descriptionMarkdown": "Evaluate the following limit:",
@@ -78,6 +85,7 @@
   },
   {
     "day": 8,
+    "id": 8,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "The 100th Derivative",
     "descriptionMarkdown": "Find $f^{(100)}(0)$ for:",
@@ -89,6 +97,7 @@
   },
   {
     "day": 9,
+    "id": 9,
     "topic": "Topic 1  ·  [Limits](https://en.wikipedia.org/wiki/Limit_of_a_function) and [Derivatives](https://en.wikipedia.org/wiki/Derivative)",
     "title": "Prove Euler's Formula",
     "descriptionMarkdown": "Using only power series, **prove** Euler's formula:",
@@ -100,6 +109,7 @@
   },
   {
     "day": 10,
+    "id": 10,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Transpose)",
     "title": "Prove (AB)ᵀ = BᵀAᵀ",
     "descriptionMarkdown": "Prove the transpose of a product of matrices is the product of their transposes in reverse order:",
@@ -111,6 +121,7 @@
   },
   {
     "day": 11,
+    "id": 11,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Determinant)",
     "title": "Prove det(A) = det(Aᵀ)",
     "descriptionMarkdown": "Prove that the determinant of a matrix is equal to the determinant of its transpose:",
@@ -122,6 +133,7 @@
   },
   {
     "day": 12,
+    "id": 12,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Eigenvalue#Properties)",
     "title": "Prove Eigenvalues of A and Aᵀ are the same",
     "descriptionMarkdown": "Prove that a matrix and its transpose have the same eigenvalues:",
@@ -133,6 +145,7 @@
   },
   {
     "day": 13,
+    "id": 13,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Cayley-Hamilton_theorem)",
     "title": "Prove the Cayley-Hamilton Theorem for 2x2 Matrices",
     "descriptionMarkdown": "For a 2x2 matrix A, prove that it satisfies its own characteristic equation:",
@@ -144,6 +157,7 @@
   },
   {
     "day": 14,
+    "id": 14,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Rank-nullity_theorem)",
     "title": "Prove the Rank-Nullity Theorem",
     "descriptionMarkdown": "For a linear map T from a finite-dimensional vector space V to a vector space W, prove:",
@@ -155,6 +169,7 @@
   },
   {
     "day": 15,
+    "id": 15,
     "topic": "[Topic 2  ·  Linear Algebra](https://en.wikipedia.org/wiki/Cauchy-Schwarz_inequality)",
     "title": "Prove the Cauchy-Schwarz Inequality",
     "descriptionMarkdown": "For all vectors u and v of an inner product space, prove:",
@@ -166,6 +181,7 @@
   },
   {
     "day": 16,
+    "id": 16,
     "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
     "title": "A Simple Integral",
     "descriptionMarkdown": "Evaluate the following integral:",
@@ -177,6 +193,7 @@
   },
   {
     "day": 17,
+    "id": 17,
     "topic": "Topic 3  ·  Advanced Integration",
     "title": "Integral of sec(x)",
     "descriptionMarkdown": "Evaluate the following integral:",
@@ -188,6 +205,7 @@
   },
   {
     "day": 18,
+    "id": 18,
     "topic": "Topic 3  ·  Advanced Integration",
     "title": "Application of Integration by Parts",
     "descriptionMarkdown": "Evaluate the following integral:",
@@ -199,6 +217,7 @@
   },
   {
     "day": 19,
+    "id": 19,
     "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Gaussian_integral)",
     "title": "The Gaussian Integral",
     "descriptionMarkdown": "Evaluate the area under the standard bell curve over the entire real line:",
@@ -210,6 +229,7 @@
   },
   {
     "day": 20,
+    "id": 20,
     "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Dirichlet_integral)",
     "title": "Feynman's Favourite Trick",
     "descriptionMarkdown": "Evaluate the [Dirichlet integral](https://en.wikipedia.org/wiki/Dirichlet_integral):",
@@ -221,6 +241,7 @@
   },
   {
     "day": 21,
+    "id": 21,
     "topic": "[Topic 3  ·  Advanced Integration](https://en.wikipedia.org/wiki/Frullani_integral)",
     "title": "The Frullani Integral",
     "descriptionMarkdown": "Evaluate the following integral for constants $a, b > 0$:",
@@ -232,6 +253,7 @@
   },
   {
     "day": 22,
+    "id": 22,
     "topic": "Topic 3  ·  Advanced Integration",
     "title": "Prove Integration by Parts",
     "descriptionMarkdown": "Prove the integration by parts formula:",
@@ -243,6 +265,7 @@
   },
   {
     "day": 23,
+    "id": 23,
     "topic": "Topic 3  ·  Advanced Integration",
     "title": "Prove Γ(½) = √π",
     "descriptionMarkdown": "The Gamma function is defined as $$\\Gamma(s) = \\int_0^\\infty t^{s-1}e^{-t}\\thinspace dt$$ Prove that:",
@@ -254,6 +277,7 @@
   },
   {
     "day": 24,
+    "id": 24,
     "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "A Separable ODE",
     "descriptionMarkdown": "Solve the following differential equation:",
@@ -265,6 +289,7 @@
   },
   {
     "day": 25,
+    "id": 25,
     "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Bernoulli_differential_equation)",
     "title": "The Bernoulli Equation",
     "descriptionMarkdown": "Solve the non-linear [first-order ODE](https://en.wikipedia.org/wiki/Ordinary_differential_equation):",
@@ -276,6 +301,7 @@
   },
   {
     "day": 26,
+    "id": 26,
     "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Mechanical_resonance)",
     "title": "Resonance",
     "descriptionMarkdown": "Solve the driven oscillator with $y(0) = 0$, $y'(0) = 0$:",
@@ -287,6 +313,7 @@
   },
   {
     "day": 27,
+    "id": 27,
     "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Clairaut%27s_equation)",
     "title": "Clairaut's Equation",
     "descriptionMarkdown": "Find the **general** solution (straight lines) AND the **singular** solution (envelope curve):",
@@ -298,6 +325,7 @@
   },
   {
     "day": 28,
+    "id": 28,
     "topic": "[Topic 4  ·  Ordinary Differential Equations](https://en.wikipedia.org/wiki/Abel%27s_identity)",
     "title": "Prove Abel's Identity",
     "descriptionMarkdown": "Let $y_1, y_2$ be any two solutions of $y'' + p(x)y' + q(x)y = 0$. **Prove** that the Wronskian $W = y_1 y_2' - y_2 y_1'$ satisfies:",
@@ -309,6 +337,7 @@
   },
   {
     "day": 29,
+    "id": 29,
     "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
     "title": "Complex Arithmetic",
     "descriptionMarkdown": "Compute the following:",
@@ -320,6 +349,7 @@
   },
   {
     "day": 30,
+    "id": 30,
     "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Exponentiation#Complex_exponentiation)",
     "title": "Imaginary Powers",
     "descriptionMarkdown": "Find the **principal value** of $i$ raised to the power of $i$:",
@@ -331,6 +361,7 @@
   },
   {
     "day": 31,
+    "id": 31,
     "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Rational Semicircle Contour",
     "descriptionMarkdown": "Evaluate using the Residue Theorem over a semicircular contour in the upper half-plane:",
@@ -342,6 +373,7 @@
   },
   {
     "day": 32,
+    "id": 32,
     "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Residue_theorem)",
     "title": "The Unit Circle Contour",
     "descriptionMarkdown": "Evaluate for real constant $a > 1$:",
@@ -353,6 +385,7 @@
   },
   {
     "day": 33,
+    "id": 33,
     "topic": "[Topic 5  ·  Complex Analysis](https://en.wikipedia.org/wiki/Basel_problem)",
     "title": "Prove the Basel Identity",
     "descriptionMarkdown": "Using the partial fraction expansion of $\\pi\\cot(\\pi z)$, **prove:**",
@@ -364,6 +397,7 @@
   },
   {
     "day": 34,
+    "id": 34,
     "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
     "title": "A Simple PDE",
     "descriptionMarkdown": "Find the general solution to the following partial differential equation:",
@@ -375,6 +409,7 @@
   },
   {
     "day": 35,
+    "id": 35,
     "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Wave_equation)",
     "title": "The Plucked String  (Wave Equation)",
     "descriptionMarkdown": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = \\sin x$ and $u_t(x,0) = 0$:",
@@ -386,6 +421,7 @@
   },
   {
     "day": 36,
+    "id": 36,
     "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Heat_equation)",
     "title": "Cooling on a Rod  (Heat Equation)",
     "descriptionMarkdown": "Solve $u_t = u_{xx}$ on $[0,\\pi]$ with $u(0,t)=u(\\pi,t)=0$ and initial condition:",
@@ -397,6 +433,7 @@
   },
   {
     "day": 37,
+    "id": 37,
     "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Laplace%27s_equation)",
     "title": "Steady State on a Disk  (Laplace's Equation)",
     "descriptionMarkdown": "Solve $\\nabla^2 u = 0$ on the unit disk $r \\le 1$ with boundary condition $u(1,\\theta) = \\sin^2\\theta$:",
@@ -408,6 +445,7 @@
   },
   {
     "day": 38,
+    "id": 38,
     "topic": "[Topic 6  ·  Partial Differential Equations](https://en.wikipedia.org/wiki/Green%27s_identities)",
     "title": "Prove Green's First Identity",
     "descriptionMarkdown": "For smooth $u$, $v$ on a bounded domain $\\Omega \\subset \\mathbb{R}^3$ with smooth boundary $\\partial\\Omega$, **prove:**",
@@ -419,6 +457,7 @@
   },
   {
     "day": 39,
+    "id": 39,
     "topic": "[Topic 7  ·  First-Order Differential Equations](https://en.wikipedia.org/wiki/Integrating_factor)",
     "title": "Prove the Integrating Factor Identity",
     "descriptionMarkdown": "For $y' + p(x)y = g(x)$, **prove** that multiplying by $\\mu(x) = e^{\\int p\\thinspace dx}$ gives a perfect derivative:",
@@ -430,6 +469,7 @@
   },
   {
     "day": 40,
+    "id": 40,
     "topic": "[Topic 8  ·  Second-Order Differential Equations](https://en.wikipedia.org/wiki/Characteristic_equation_(calculus))",
     "title": "Prove the Repeated Root Case",
     "descriptionMarkdown": "For $ay''+by'+cy=0$ with a **repeated** characteristic root $r_0$, **prove** that $y_2 = xe^{r_0 x}$ is a solution:",

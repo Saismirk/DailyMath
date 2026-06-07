@@ -53,101 +53,141 @@
 
     <div id="app" class="flex flex-col h-screen w-full min-w-[640px] min-h-[520px]">
         
-        <!-- ── Header ────────────────────────────────────────────────── -->
-        <div class="bg-[#242424] px-[28px] py-[14px] flex justify-between items-center shrink-0">
-            <div class="flex flex-col gap-[3px]">
-                <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px] md-content" v-html="topicHtml">
-                </div>
-                <div class="text-white text-[21px] font-semibold">
-                    {{ currentQuestion.title }}
-                </div>
+        <!-- Home Screen -->
+        <div v-if="!appStarted" class="flex flex-col items-center justify-center h-full bg-[#171717] text-center">
+            <h1 class="text-4xl font-bold text-white mb-4">Welcome to Daily Math</h1>
+            <div class="text-left max-w-md mx-auto bg-[#242424] p-6 rounded-lg">
+                <h2 class="text-2xl font-semibold text-white mb-4">How to Use:</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Use the <b><i>Next</i></b> and <b><i>Previous</i></b> buttons to navigate through questions.</li>
+                    <li>Toggle <b><i>Hints</i></b> for additional help.</li>
+                    <li>Toggle <b><i>Solution</i></b> to show solution steps.</li>
+                    <li>Toggle <b><i>Answer</i></b> to see the solution.</li>
+                    <li>Mark questions as solved to track your progress.</li>
+                </ul>
             </div>
-            
-            <div class="flex flex-col items-end gap-[2px]">
-                <div class="text-[#7fb8e8] text-[18px] font-semibold">
-                    {{ progressText }}
-                </div>
-                <div class="text-[#4a7aaa] text-[10px]">
-                    questions
-                </div>
-            </div>
+            <button @click="startApp" class="mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">Start</button>
         </div>
 
-        <!-- ── Scrollable content ────────────────────────────────────── -->
-        <div class="flex-1 overflow-y-auto">
-            <div class="mx-[36px] mt-[20px] mb-[24px] flex flex-col gap-[32px]">
+        <!-- Question View -->
+        <template v-if="appStarted">
+            <!-- ── Header ────────────────────────────────────────────────── -->
+            <div class="bg-[#242424] px-[28px] py-[14px] flex justify-between items-center shrink-0">
+                <div class="flex flex-col gap-[3px]">
+                    <div class="text-[#7fb8e8] text-[11px] font-medium tracking-[0.8px] md-content" v-html="topicHtml">
+                    </div>
+                    <div class="text-white text-[21px] font-semibold">
+                        {{ currentQuestion.title }}
+                    </div>
+                </div>
                 
-                <!-- Question description (markdown with inline math) -->
-                <div class="md-content px-[20px] text-[15px]" v-math="descriptionHtml"></div>
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-end gap-[2px]">
+                        <div class="text-[#7fb8e8] text-[18px] font-semibold">
+                            {{ progressText }}
+                        </div>
+                        <div class="text-[#4a7aaa] text-[10px]">
+                            questions
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-[2px]">
+                        <div class="text-[#7fb8e8] text-[18px] font-semibold">
+                            {{ Math.round(progressPercentage) }}%
+                        </div>
+                        <div class="text-[#4a7aaa] text-[10px]">
+                            complete
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Main formula (LaTeX) -->
-                <div class="main-formula flex justify-center w-full" v-math="mainFormulaHtml"></div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-700 h-1">
+                <div class="bg-blue-500 h-1" :style="{ width: progressPercentage + '%' }"></div>
+            </div>
 
-                <!-- Proof badge -->
-                <div v-if="currentQuestion.isProof" 
-                     class="self-start bg-[#2B2B2B] border border-[#aac4e8] rounded-[4px] px-[10px] py-[4px]">
-                    <span class="text-[#2a5599] text-[12px] font-medium">✎  Proof / Identity</span>
+            <!-- ── Scrollable content ────────────────────────────────────── -->
+            <div class="flex-1 overflow-y-auto">
+                <div class="mx-[36px] mt-[20px] mb-[24px] flex flex-col gap-[32px]">
+                    
+                    <!-- Question description (markdown with inline math) -->
+                    <div class="md-content px-[20px] text-[15px]" v-math="descriptionHtml"></div>
+
+                    <!-- Main formula (LaTeX) -->
+                    <div class="main-formula flex justify-center w-full" v-math="mainFormulaHtml"></div>
+
+                    <!-- Proof badge -->
+                    <div v-if="currentQuestion.isProof" 
+                         class="self-start bg-[#2B2B2B] border border-[#aac4e8] rounded-[4px] px-[10px] py-[4px]">
+                        <span class="text-[#2a5599] text-[12px] font-medium">✎  Proof / Identity</span>
+                    </div>
+
+                    <!-- Hints panel -->
+                    <div v-show="hintsVisible" 
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
+                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">HINTS</div>
+                        <div class="md-content text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
+                    </div>
+
+                    <!-- Solution panel -->
+                    <div v-show="solutionVisible" 
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
+                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">SOLUTION</div>
+                        <div class="md-content text-[14.5px] text-gray-300" v-math="solutionHtml"></div>
+                    </div>
+
+                    <!-- Answer panel -->
+                    <div v-show="answerVisible" 
+                         class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[8px]">
+                        <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">ANSWER</div>
+                        <div class="flex justify-center text-white" v-math="answerFormulaHtml"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ── Navigation bar ────────────────────────────────────────── -->
+            <div class="bg-[#2B2B2B] border-t border-[#050505] px-[24px] py-[10px] flex justify-between items-center shrink-0">
+                
+                <button @click="prev" :disabled="!canGoPrev" 
+                        class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
+                        :class="canGoPrev ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                    ← Previous
+                </button>
+
+                <div class="flex gap-[10px] absolute left-1/2 -translate-x-1/2">
+                    <button @click="toggleHints" 
+                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                        {{ hintsButtonText }}
+                    </button>
+                    <button @click="toggleSolution" v-if="currentQuestion.solutionMarkdown"
+                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                        {{ solutionButtonText }}
+                    </button>
+                    <button @click="toggleAnswer" 
+                            class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
+                        {{ answerButtonText }}
+                    </button>
                 </div>
 
-                <!-- Hints panel -->
-                <div v-show="hintsVisible" 
-                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
-                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">HINTS</div>
-                    <div class="md-content text-[14.5px] text-gray-300" v-math="hintsHtml"></div>
-                </div>
-
-                <!-- Solution panel -->
-                <div v-show="solutionVisible" 
-                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[6px]">
-                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">SOLUTION</div>
-                    <div class="md-content text-[14.5px] text-gray-300" v-math="solutionHtml"></div>
-                </div>
-
-                <!-- Answer panel -->
-                <div v-show="answerVisible" 
-                     class="bg-[#242424] border-b-[3px] border-[#0D0D0D] rounded-[8px] px-[20px] py-[14px] flex flex-col gap-[8px]">
-                    <div class="font-semibold text-[11px] tracking-[1.2px] text-gray-400">ANSWER</div>
-                    <div class="flex justify-center text-white" v-math="answerFormulaHtml"></div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" :id="'solved-' + currentQuestion.id" :checked="isSolved(currentQuestion.id)" @change="toggleSolved(currentQuestion.id)" class="form-checkbox h-4 w-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500">
+                        <label :for="'solved-' + currentQuestion.id" class="ml-2 text-sm text-gray-300">Mark as Solved</label>
+                    </div>
+                    <button @click="next" :disabled="!canGoNext" 
+                            class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
+                            :class="canGoNext ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
+                        Next →
+                    </button>
                 </div>
 
             </div>
-        </div>
-
-        <!-- ── Navigation bar ────────────────────────────────────────── -->
-        <div class="bg-[#2B2B2B] border-t border-[#050505] px-[24px] py-[10px] flex justify-between items-center shrink-0">
-            
-            <button @click="prev" :disabled="!canGoPrev" 
-                    class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
-                    :class="canGoPrev ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
-                ← Previous
-            </button>
-
-            <div class="flex gap-[10px] absolute left-1/2 -translate-x-1/2">
-                <button @click="toggleHints" 
-                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
-                    {{ hintsButtonText }}
-                </button>
-                <button @click="toggleSolution" v-if="currentQuestion.solutionMarkdown"
-                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
-                    {{ solutionButtonText }}
-                </button>
-                <button @click="toggleAnswer" 
-                        class="px-[16px] py-[8px] text-[13px] text-gray-200 rounded hover:bg-white/10 active:bg-white/20 transition-colors duration-200">
-                    {{ answerButtonText }}
-                </button>
-            </div>
-
-            <button @click="next" :disabled="!canGoNext" 
-                    class="px-[18px] py-[8px] text-[13px] rounded transition-colors duration-200"
-                    :class="canGoNext ? 'text-gray-200 hover:bg-white/10 active:bg-white/20 cursor-pointer' : 'text-gray-600 cursor-not-allowed'">
-                Next →
-            </button>
-
-        </div>
+        </template>
     </div>
 
     <script>
-        const { createApp, ref, computed } = Vue;
+        const { createApp, ref, computed, onMounted } = Vue;
 
         // Custom Vue Directive to handle Math rendering safely on DOM updates
         const mathDirective = {
@@ -192,14 +232,27 @@
             
             const app = createApp({
             setup() {
+                const appStarted = ref(false);
                 const currentIndex = ref(0);
                 const hintsVisible = ref(false);
                 const solutionVisible = ref(false);
                 const answerVisible = ref(false);
+                const solvedQuestions = ref(new Set());
+
+                onMounted(() => {
+                    const solvedCookie = document.cookie.split(';').find(c => c.trim().startsWith('solvedQuestions='));
+                    if (solvedCookie) {
+                        const solvedIds = solvedCookie.split('=')[1];
+                        if (solvedIds) {
+                            solvedQuestions.value = new Set(solvedIds.split(',').map(Number));
+                        }
+                    }
+                });
 
                 // --- Computed View State ---
                 const currentQuestion = computed(() => questionRepository[currentIndex.value]);
                 const progressText = computed(() => `${currentIndex.value + 1}  /  ${questionRepository.length}`);
+                const progressPercentage = computed(() => (solvedQuestions.value.size / questionRepository.length) * 100);
                 
                 const canGoPrev = computed(() => currentIndex.value > 0);
                 const canGoNext = computed(() => currentIndex.value < questionRepository.length - 1);
@@ -209,15 +262,19 @@
                 const answerButtonText = computed(() => answerVisible.value ? "Hide Answer" : "Show Answer");
 
                 // --- Markdown & LaTeX Generators ---
-                const topicHtml = computed(() => marked.parse(currentQuestion.value.topic));
-                const descriptionHtml = computed(() => marked.parse(currentQuestion.value.descriptionMarkdown));
-                const hintsHtml = computed(() => marked.parse(currentQuestion.value.hintsMarkdown));
-                const solutionHtml = computed(() => currentQuestion.value.solutionMarkdown ? marked.parse(currentQuestion.value.solutionMarkdown) : '');
+                const topicHtml = computed(() => appStarted.value ? marked.parse(currentQuestion.value.topic) : '');
+                const descriptionHtml = computed(() => appStarted.value ? marked.parse(currentQuestion.value.descriptionMarkdown) : '');
+                const hintsHtml = computed(() => appStarted.value ? marked.parse(currentQuestion.value.hintsMarkdown) : '');
+                const solutionHtml = computed(() => (appStarted.value && currentQuestion.value.solutionMarkdown) ? marked.parse(currentQuestion.value.solutionMarkdown) : '');
                 
-                const mainFormulaHtml = computed(() => `$$ ${currentQuestion.value.mainFormulaLaTeX} $$`);
-                const answerFormulaHtml = computed(() => `$$ ${currentQuestion.value.answerFormulaLaTeX} $$`);
+                const mainFormulaHtml = computed(() => appStarted.value ? `$$ ${currentQuestion.value.mainFormulaLaTeX} $$` : '');
+                const answerFormulaHtml = computed(() => appStarted.value ? `$$ ${currentQuestion.value.answerFormulaLaTeX} $$` : '');
 
                 // --- Commands (Navigation & Toggles) ---
+                function startApp() {
+                    appStarted.value = true;
+                }
+
                 function prev() {
                     if (canGoPrev.value) {
                         currentIndex.value--;
@@ -242,12 +299,29 @@
                 function toggleSolution() { solutionVisible.value = !solutionVisible.value; }
                 function toggleAnswer() { answerVisible.value = !answerVisible.value; }
 
+                function isSolved(id) {
+                    return solvedQuestions.value.has(id);
+                }
+
+                function toggleSolved(id) {
+                    const newSolved = new Set(solvedQuestions.value);
+                    if (newSolved.has(id)) {
+                        newSolved.delete(id);
+                    } else {
+                        newSolved.add(id);
+                    }
+                    solvedQuestions.value = newSolved;
+                    document.cookie = `solvedQuestions=${Array.from(solvedQuestions.value).join(',')}; max-age=31536000; path=/`;
+                }
+
                 return {
+                    appStarted, startApp,
                     currentQuestion, progressText, canGoPrev, canGoNext,
                     hintsVisible, solutionVisible, answerVisible,
                     hintsButtonText, solutionButtonText, answerButtonText,
                     topicHtml, descriptionHtml, hintsHtml, solutionHtml, mainFormulaHtml, answerFormulaHtml,
-                    prev, next, toggleHints, toggleSolution, toggleAnswer
+                    prev, next, toggleHints, toggleSolution, toggleAnswer,
+                    progressPercentage, isSolved, toggleSolved
                 };
             }
             });
